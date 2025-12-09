@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/galerija.css" />
+    <title>Naljepnice</title>
+    <link rel="icon" type="image/favicon" href="projekt-slike/logo.ps.jpg" />
+  </head>
+  <body>
+    <button id="cart-toggle">
+      🛒 Košarica (<span id="cart-count">0</span>)
+    </button>
+
+    <div id="cart-sidebar">
+      <button id="cart-close" class="cart-close">x</button>
+      <h3>Vaša košarica</h3>
+
+      <ul id="cart-items"></ul>
+
+      <p>
+        <strong>Ukupno artikala: </strong><span id="cart-items-total">0</span>
+      </p>
+      <p><strong>Ukupna cijena: </strong><span id="cart-total">0 €</span></p>
+
+      <button id="checkout-btn">Naruči</button>
+
+      <!-- Checkout panel (skriven dok ne kliknemo Naruči) -->
+      <div id="checkout-panel" class="checkout-panel">
+        <h3>Podaci za narudžbu</h3>
+
+        <label
+          >Ime i prezime:
+          <input type="text" id="cust-name" required />
+        </label>
+
+        <label
+          >Email:
+          <input type="email" id="cust-email" required />
+        </label>
+
+        <label
+          >Telefon:
+          <input type="tel" id="cust-phone" required />
+        </label>
+
+        <label
+          >Adresa:
+          <input type="text" id="cust-address" required />
+        </label>
+
+        <label
+          >Grad:
+          <input type="text" id="cust-city" required />
+        </label>
+
+        <label
+          >Dostava:
+          <select id="cust-delivery" required>
+            <option value="GLS">GLS</option>
+            <option value="HP Express">HP Express</option>
+            <option value="Osobno preuzimanje">Osobno preuzimanje</option>
+          </select>
+        </label>
+
+        <label
+          >Plaćanje:
+          <select id="cust-payment" required>
+            <option value="Pouzeće">Pouzeće</option>
+            <option value="Gotovina pri preuzimanju">
+              Gotovina pri preuzimanju
+            </option>
+            <option value="Uplata na račun">Uplata na račun</option>
+          </select>
+        </label>
+
+        <button id="submit-order">Pošalji narudžbu</button>
+        <p id="order-message" class="order-message"></p>
+      </div>
+    </div>
+    <h2>Naljepnice</h2>
+
+    <main class="g2">
+      <div>
+        <h3>Galerija slika</h3>
+        <div class="galerija3 layout-desno">
+          <div class="mySlides">
+            <div class="numbertext">1 / 9</div>
+            <img src="projekt-slike/naljepnice/boca.jpg" style="width: 100%" />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">2 / 9</div>
+            <img src="projekt-slike/naljepnice/boce.jpg" style="width: 100%" />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">3 / 9</div>
+            <img
+              src="projekt-slike/naljepnice/kutija.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">4 / 9</div>
+            <img
+              src="projekt-slike/naljepnice/kutija2.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">5 / 9</div>
+            <img src="projekt-slike/naljepnice/okvir.jpg" style="width: 100%" />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">6 / 9</div>
+            <img
+              src="projekt-slike/naljepnice/ploca-krstenje.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">7 / 9</div>
+            <img src="projekt-slike/naljepnice/ploca.jpg" style="width: 100%" />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">8 / 9</div>
+            <img
+              src="projekt-slike/naljepnice/ploca2.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">9 / 9</div>
+            <img
+              src="projekt-slike/naljepnice/print-rodendan.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          <!--Thumbnail slike-->
+          <div class="row">
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/naljepnice/boca.jpg"
+                style="width: 100%"
+                onclick="currentSlide(1)"
+                alt="Boca"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/naljepnice/boce.jpg"
+                style="width: 100%"
+                onclick="currentSlide(2)"
+                alt="Boce"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/naljepnice/kutija.jpg"
+                style="width: 100%"
+                onclick="currentSlide(3)"
+                alt="Kutija"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/naljepnice/kutija2.jpg"
+                style="width: 100%"
+                onclick="currentSlide(4)"
+                alt="Kutija"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/naljepnice/okvir.jpg"
+                style="width: 100%"
+                onclick="currentSlide(5)"
+                alt="Okvir za slikanje"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/naljepnice/ploca-krstenje.jpg"
+                style="width: 100%"
+                onclick="currentSlide(6)"
+                alt="Ploča za krštenje"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/naljepnice/ploca.jpg"
+                style="width: 100%"
+                onclick="currentSlide(7)"
+                alt="Ploča"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/naljepnice/ploca2.jpg"
+                style="width: 100%"
+                onclick="currentSlide(8)"
+                alt="Ploča2"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/naljepnice/print-rodendan.jpg"
+                style="width: 100%"
+                onclick="currentSlide(9)"
+                alt="Print na darove"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside>
+        <p>Naručite svoje <strong>personalizirane naljepnice</strong>!</p>
+        <div class="card-container">
+          <div
+            class="card"
+            data-id="kutija"
+            data-name="Kutija za darivanje"
+            data-visine="25cm,30cm,45cm"
+            data-boje="bijela,crna,zelena,plava,roza,zlatna,srebrna"
+            data-dodaci="bez,posebna priprema"
+            data-price_25="45"
+            data-price_30="50"
+            data-price_45="60"
+          >
+            <img
+              src="projekt-slike/naljepnice/kutija.jpg"
+              alt="Kutija za darivanje"
+            />
+            <h4>Kutije za darivanje</h4>
+            <p>Boju, visinu i dizajn birate sami...</p>
+            <button class="button">Odaberite</button>
+          </div>
+          <div
+            class="card"
+            data-id="ploca"
+            data-name="Prigodna ploča"
+            data-visine="30cm,50m,70cm"
+            data-boje="bijela,crna,zelena,plava,roza,zlatna,srebrna"
+            data-dodaci="bez,posebna priprema"
+            data-price_30="25"
+            data-price_50="40"
+            data-price_70="55"
+          >
+            <img
+              src="projekt-slike/naljepnice/ploca-krstenje.jpg"
+              alt="Ploča za krštenje"
+            />
+            <h4>Prigodne ploče</h4>
+            <p>Boju, visinu i dizajn birate sami...</p>
+            <button class="button">Odaberite</button>
+          </div>
+          <div
+            class="card"
+            data-id="boca"
+            data-name="boca"
+            data-visine="2cm,5cm,10cm"
+            data-boje="bijela,crna,zelena,plava,roza,zlatna,srebrna"
+            data-dodaci="bez,posebna priprema"
+            data-price_2="1"
+            data-price_5="2"
+            data-price_10="3.99"
+          >
+            <img src="projekt-slike/naljepnice/boca.jpg" alt="Boca" />
+            <h4>Boce</h4>
+            <p>Boju, visinu i dizajn birate sami...</p>
+            <button class="button">Odaberite</button>
+          </div>
+          <br />
+        </div>
+      </aside>
+    </main>
+    <footer class="dalje">
+      <a href="index.html">Početna</a>
+      <a href="memo.html">Memory</a>
+      <a href="art.html">Oslikavanje stakla</a>
+      <a href="print.html">Print</a>
+      <a href="gnom.html">Gnomovi</a>
+    </footer>
+    <!-- POPUP ZA NARUDŽBU -->
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <div class="modal-left">
+          <h3 id="modal-product-name"></h3>
+          <img
+            id="modal-product-image"
+            src="projekt-slike/gnomovi/bijeli_gnomovi.jpg"
+            alt="Bijeli gnomovi"
+          />
+        </div>
+
+        <div class="modal-right">
+          <label>Visina:</label>
+          <select id="select-visina"></select>
+
+          <label>Boja:</label>
+          <select id="select-boja"></select>
+
+          <label>Dodatak:</label>
+          <select id="select-dodatak"></select>
+
+          <p id="modal-price">Cijena: 0 €</p>
+          <label>Količina:</label>
+          <div class="qty-box">
+            <button class="qty-btn" id="qty-minus">−</button>
+            <span id="qty-number">1</span>
+            <button class="qty-btn" id="qty-plus">+</button>
+          </div>
+
+          <button id="modal-order-btn">Naruči</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/galerija.js"></script>
+  </body>
+</html>

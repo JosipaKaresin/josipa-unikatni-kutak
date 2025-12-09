@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/galerija.css" />
+    <title>Oslikavanje stakla</title>
+    <link rel="icon" type="image/favicon" href="projekt-slike/logo.ps.jpg" />
+  </head>
+  <body>
+    <button id="cart-toggle">
+      🛒 Košarica (<span id="cart-count">0</span>)
+    </button>
+
+    <div id="cart-sidebar">
+      <button id="cart-close" class="cart-close">x</button>
+      <h3>Vaša košarica</h3>
+
+      <ul id="cart-items"></ul>
+
+      <p>
+        <strong>Ukupno artikala: </strong><span id="cart-items-total">0</span>
+      </p>
+      <p><strong>Ukupna cijena: </strong><span id="cart-total">0 €</span></p>
+
+      <button id="checkout-btn">Naruči</button>
+
+      <!-- Checkout panel (skriven dok ne kliknemo Naruči) -->
+      <div id="checkout-panel" class="checkout-panel">
+        <h3>Podaci za narudžbu</h3>
+
+        <label
+          >Ime i prezime:
+          <input type="text" id="cust-name" required />
+        </label>
+
+        <label
+          >Email:
+          <input type="email" id="cust-email" required />
+        </label>
+
+        <label
+          >Telefon:
+          <input type="tel" id="cust-phone" required />
+        </label>
+
+        <label
+          >Adresa:
+          <input type="text" id="cust-address" required />
+        </label>
+
+        <label
+          >Grad:
+          <input type="text" id="cust-city" required />
+        </label>
+
+        <label
+          >Dostava:
+          <select id="cust-delivery">
+            <option value="GLS">GLS</option>
+            <option value="HP Express">HP Express</option>
+            <option value="Osobno preuzimanje">Osobno preuzimanje</option>
+          </select>
+        </label>
+
+        <label
+          >Plaćanje:
+          <select id="cust-payment">
+            <option value="Pouzeće">Pouzeće</option>
+            <option value="Gotovina pri preuzimanju">
+              Gotovina pri preuzimanju
+            </option>
+            <option value="Uplata na račun">Uplata na račun</option>
+          </select>
+        </label>
+
+        <button id="submit-order">Pošalji narudžbu</button>
+        <p id="order-message" class="order-message"></p>
+      </div>
+    </div>
+
+    <h2>Oslikavanje stakla</h2>
+
+    <main class="g3">
+      <div>
+        <h3>Galerija slika</h3>
+        <div class="galerija3 layout-desno">
+          <div class="mySlides">
+            <div class="numbertext">1 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/boca-hajduk.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">2 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/boca-karanfil.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">3 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/boca-snjegovic.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">4 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/boca-suvenir.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">5 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/boca_casa.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">6 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/boce-bozic.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">7 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-bozic (2).jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">8 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-bozic.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">9 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-djevojacka.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">10 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-koktel.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">11 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-kostur.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">12 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-rodendan.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">13 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-ruza.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">14 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-sljokice.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">15 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-uskrs.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">16 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/case-komplet.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">17 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/case-manje-ruza.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">18 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/case-vjencanje.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">19 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/drvo-metal.sljiva.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">20 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/drvo-set-sljiva.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">21 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/plavi_cvjetovi.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">22 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/salica-batman.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">23 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/salice-cvijet.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">24 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/set-kava-cvjetovi.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">25 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/set-kava.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">26 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/set-sljiva.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">27 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/set-suncokret.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">28 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/tegla-bozic.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">29 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/tegla-slinga.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">30 / 30</div>
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-rodendan2.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          <div class="row">
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/boca-hajduk.jpg"
+                style="width: 100%"
+                onclick="currentSlide(1)"
+                alt="Boca Hajduk"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/boca-karanfil.jpg"
+                style="width: 100%"
+                onclick="currentSlide(2)"
+                alt="Boca karanfili"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/boca-snjegovic.jpg"
+                style="width: 100%"
+                onclick="currentSlide(3)"
+                alt="Boca snjegović"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/boca-suvenir.jpg"
+                style="width: 100%"
+                onclick="currentSlide(4)"
+                alt="Boca suvenir"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/boca_casa.jpg"
+                style="width: 100%"
+                onclick="currentSlide(5)"
+                alt="Set boca i čaša"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/boce-bozic.jpg"
+                style="width: 100%"
+                onclick="currentSlide(6)"
+                alt="Svjetleće boce"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-bozic (2).jpg"
+                style="width: 100%"
+                onclick="currentSlide(7)"
+                alt="Božićna čaša"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-bozic.jpg"
+                style="width: 100%"
+                onclick="currentSlide(8)"
+                alt="Božićna čaša"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-djevojacka.jpg"
+                style="width: 100%"
+                onclick="currentSlide(9)"
+                alt="Čaša za djevojačku"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-koktel.jpg"
+                style="width: 100%"
+                onclick="currentSlide(10)"
+                alt="Čaše za koktel"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-kostur.jpg"
+                style="width: 100%"
+                onclick="currentSlide(11)"
+                alt="Čaša s kosturom"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-rodendan.jpg"
+                style="width: 100%"
+                onclick="currentSlide(12)"
+                alt="Čaša za rođendan"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-ruza.jpg"
+                style="width: 100%"
+                onclick="currentSlide(13)"
+                alt="Čaša s ružama"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-sljokice.jpg"
+                style="width: 100%"
+                onclick="currentSlide(14)"
+                alt="Čaše sa šljokicama"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-uskrs.jpg"
+                style="width: 100%"
+                onclick="currentSlide(15)"
+                alt="Uskrsna čaša"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/case-komplet.jpg"
+                style="width: 100%"
+                onclick="currentSlide(16)"
+                alt="Komplet čaša"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/case-manje-ruza.jpg"
+                style="width: 100%"
+                onclick="currentSlide(17)"
+                alt="Čaše sa ružama"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/case-vjencanje.jpg"
+                style="width: 100%"
+                onclick="currentSlide(18)"
+                alt="Čaše za vjenčanja"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/drvo-metal.sljiva.jpg"
+                style="width: 100%"
+                onclick="currentSlide(19)"
+                alt="Set čaša na drvetu s metalom"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/drvo-set-sljiva.jpg"
+                style="width: 100%"
+                onclick="currentSlide(20)"
+                alt="Set čaša na drvetu"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/plavi_cvjetovi.jpg"
+                style="width: 100%"
+                onclick="currentSlide(21)"
+                alt="Set s plavim cvjetovima"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/salica-batman.jpg"
+                style="width: 100%"
+                onclick="currentSlide(22)"
+                alt="Batman šalica"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/salice-cvijet.jpg"
+                style="width: 100%"
+                onclick="currentSlide(23)"
+                alt="Šalice s cvjetovima"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/set-kava-cvjetovi.jpg"
+                style="width: 100%"
+                onclick="currentSlide(24)"
+                alt="Set za kavu"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/set-kava.jpg"
+                style="width: 100%"
+                onclick="currentSlide(25)"
+                alt="Set za kavu"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/set-sljiva.jpg"
+                style="width: 100%"
+                onclick="currentSlide(26)"
+                alt="Set za rakiju"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/set-suncokret.jpg"
+                style="width: 100%"
+                onclick="currentSlide(27)"
+                alt="Set sa suncokretom"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/tegla-bozic.jpg"
+                style="width: 100%"
+                onclick="currentSlide(28)"
+                alt="Božićna tegla"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/tegla-slinga.jpg"
+                style="width: 100%"
+                onclick="currentSlide(29)"
+                alt="Tegla sa šlingom"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/oslikavanje-stakla/casa-rodendan2.jpg"
+                style="width: 100%"
+                onclick="currentSlide(30)"
+                alt="Čaša za rođendan"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside>
+        <p>Naručite svog <strong>Gnoma</strong>!</p>
+        <div class="card-container">
+          <div
+            class="card"
+            data-id="casa"
+            data-name="Čaša"
+            data-price_0_03="5"
+            data-price_0_2="7"
+            data-price_0_3="9"
+            data-visine="0.03l,0.2l,0.3l"
+            data-boje="bijela,srebrna,zlatna,crna,cvijet,šljiva,Božić,Uskrs"
+            data-dodaci="bez,špaga,šljokice,pozlata"
+          >
+            <img
+              src="projekt-slike/oslikavanje-stakla/casa-bozic (2).jpg"
+              alt="Božićna čaša"
+            />
+            <h4>Čaše</h4>
+            <p>Boju, visinu i dodatke čaša birate sami...</p>
+            <button class="button">Odaberite</button>
+          </div>
+          <div
+            class="card"
+            data-id="set"
+            data-name="Set za kavu"
+            data-price_0_2="25"
+            data-price_0_3="30"
+            data-price_prozirna="35"
+            data-visine="0.2l,0.3l,prozirna"
+            data-boje="bijela,crna,zelena,plava,roza,smeđa,bež"
+            data-dodaci="bez,špaga,šljokice,pozlata,tacna"
+          >
+            <img
+              src="projekt-slike/oslikavanje-stakla/salice-cvijet.jpg"
+              alt="Set šalica za kavu"
+            />
+            <h4>Šalice</h4>
+
+            <p>Boju, visinu i dodatke šalica birate sami...</p>
+            <button class="button">Odaberite</button>
+          </div>
+          <div
+            class="card"
+            data-id="set-pice"
+            data-name="Set za piće"
+            data-price_0_02="35"
+            data-price_0_03="40"
+            data-price_0_3="45"
+            data-visine="0.02,0.03,0.3"
+            data-boje="bijela,srebrna,crna,zlatna,šljiva,kruška,cvijetovi"
+            data-dodaci="bez,špaga,metal,tacna,šljokice,pozlata"
+          >
+            <img
+              src="projekt-slike/oslikavanje-stakla/drvo-metal.sljiva.jpg"
+              alt="Gnom i vijenac"
+            />
+            <h4>Set za piće</h4>
+
+            <p>Boju, visinu i dodatke setova birate sami...</p>
+
+            <button class="button">Odaberite</button>
+          </div>
+          <br />
+        </div>
+      </aside>
+    </main>
+    <footer class="dalje">
+      <a href="index.html">Početna</a>
+      <a href="memo.html">Memory</a>
+      <a href="naljepnice.html">Naljepnice</a>
+      <a href="print.html">Print</a>
+      <a href="gnom.html">Gnomovi</a>
+    </footer>
+
+    <!-- POPUP ZA NARUDŽBU -->
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <div class="modal-left">
+          <h3 id="modal-product-name"></h3>
+          <img
+            id="modal-product-image"
+            src="projekt-slike/gnomovi/bijeli_gnomovi.jpg"
+            alt="Bijeli gnomovi"
+          />
+        </div>
+
+        <div class="modal-right">
+          <label>Visina:</label>
+          <select id="select-visina"></select>
+
+          <label>Boja:</label>
+          <select id="select-boja"></select>
+
+          <label>Dodatak:</label>
+          <select id="select-dodatak"></select>
+
+          <p id="modal-price">Cijena: 0 €</p>
+          <label>Količina:</label>
+          <div class="qty-box">
+            <button class="qty-btn" id="qty-minus">−</button>
+            <span id="qty-number">1</span>
+            <button class="qty-btn" id="qty-plus">+</button>
+          </div>
+
+          <button id="modal-order-btn">Naruči</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/galerija.js"></script>
+  </body>
+</html>

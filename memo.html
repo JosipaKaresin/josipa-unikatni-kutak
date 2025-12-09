@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/galerija.css" />
+    <title>Memory plišanci</title>
+    <link rel="icon" type="image/favicon" href="projekt-slike/logo.ps.jpg" />
+  </head>
+  <body>
+    <button id="cart-toggle">
+      🛒 Košarica (<span id="cart-count">0</span>)
+    </button>
+
+    <div id="cart-sidebar">
+      <button id="cart-close" class="cart-close">x</button>
+      <h3>Vaša košarica</h3>
+
+      <ul id="cart-items"></ul>
+
+      <p>
+        <strong>Ukupno artikala: </strong><span id="cart-items-total">0</span>
+      </p>
+      <p><strong>Ukupna cijena: </strong><span id="cart-total">0 €</span></p>
+
+      <button id="checkout-btn">Naruči</button>
+
+      <!-- Checkout panel (skriven dok ne kliknemo Naruči) -->
+      <div id="checkout-panel" class="checkout-panel">
+        <h3>Podaci za narudžbu</h3>
+
+        <label
+          >Ime i prezime:
+          <input type="text" id="cust-name" required />
+        </label>
+
+        <label
+          >Email:
+          <input type="email" id="cust-email" required />
+        </label>
+
+        <label
+          >Telefon:
+          <input type="tel" id="cust-phone" required />
+        </label>
+
+        <label
+          >Adresa:
+          <input type="text" id="cust-address" required />
+        </label>
+
+        <label
+          >Grad:
+          <input type="text" id="cust-city" required />
+        </label>
+
+        <label
+          >Dostava:
+          <select id="cust-delivery">
+            <option value="GLS">GLS</option>
+            <option value="HP Express">HP Express</option>
+            <option value="Osobno preuzimanje">Osobno preuzimanje</option>
+          </select>
+        </label>
+
+        <label
+          >Plaćanje:
+          <select id="cust-payment">
+            <option value="Pouzeće">Pouzeće</option>
+            <option value="Gotovina pri preuzimanju">
+              Gotovina pri preuzimanju
+            </option>
+            <option value="Uplata na račun">Uplata na račun</option>
+          </select>
+        </label>
+
+        <button id="submit-order">Pošalji narudžbu</button>
+        <p id="order-message" class="order-message"></p>
+      </div>
+    </div>
+
+    <h2>Memory plišanci</h2>
+
+    <main class="g1">
+      <div>
+        <h3>Galerija slika</h3>
+        <div class="galerija3 layout-desno">
+          <div class="mySlides">
+            <div class="numbertext">1 / 5</div>
+            <img
+              src="projekt-slike/memory-plisanci/medo-nikola.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">2 / 5</div>
+            <img
+              src="projekt-slike/memory-plisanci/medo_dario.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">3 / 5</div>
+            <img
+              src="projekt-slike/memory-plisanci/medo_olesja.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">4 / 5</div>
+            <img
+              src="projekt-slike/memory-plisanci/medo_petra.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">5 / 5</div>
+            <img
+              src="projekt-slike/memory-plisanci/zeko.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          <!-- Thumbnail images -->
+          <div class="row">
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/memory-plisanci/medo-nikola.jpg"
+                style="width: 100%"
+                onclick="currentSlide(1)"
+                alt="The Woods"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/memory-plisanci/medo_dario.jpg"
+                style="width: 100%"
+                onclick="currentSlide(2)"
+                alt="Cinque Terre"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/memory-plisanci/medo_olesja.jpg"
+                style="width: 100%"
+                onclick="currentSlide(3)"
+                alt="Mountains and fjords"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/memory-plisanci/medo_petra.jpg"
+                style="width: 100%"
+                onclick="currentSlide(4)"
+                alt="Northern Lights"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/memory-plisanci/zeko.jpg"
+                style="width: 100%"
+                onclick="currentSlide(5)"
+                alt="Nature and sunrise"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside>
+        <p>Naručite svog <strong>Memory plišanca</strong>!</p>
+        <div class="card-container">
+          <div
+            class="card"
+            data-id="medvedic"
+            data-name="Medvjedic"
+            data-visine="25cm,40cm"
+            data-boje="standard"
+            data-dodaci="bez,dodatni materijal"
+            data-price_25="30"
+            data-price_40="45"
+          >
+            <img
+              src="projekt-slike/memory-plisanci/medo_olesja.jpg"
+              alt="medvjedić"
+              style="width: 100%"
+            />
+            <h4>Memory medo</h4>
+            <p>Visinu i dodatak plišanca birate sami...</p>
+
+            <button class="button">Odaberite</button>
+          </div>
+          <div
+            class="card"
+            data-id="zeko"
+            data-name="Zeko"
+            data-visine="25cm,40cm"
+            data-boje="standard"
+            data-dodaci="bez,dodatni materijal"
+            data-price_25="30"
+            data-price_40="45"
+          >
+            <img
+              src="projekt-slike/memory-plisanci/zeko.jpg"
+              alt="zeko"
+              style="width: 100%"
+            />
+            <h4>Memory zeko</h4>
+            <p>Visinu i dodatak plišanca birate sami...</p>
+            <button class="button">Odaberite</button>
+          </div>
+          <br />
+        </div>
+      </aside>
+    </main>
+    <footer class="dalje">
+      <a href="index.html">Početna</a>
+      <a href="naljepnice.html">Naljepnice</a>
+      <a href="art.html">Oslikavanje stakla</a>
+      <a href="print.html">Print</a>
+      <a href="gnom.html">Gnomovi</a>
+    </footer>
+
+    <!-- POPUP ZA NARUDŽBU -->
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <div class="modal-left">
+          <h3 id="modal-product-name"></h3>
+          <img
+            id="modal-product-image"
+            src="projekt-slike/memory-plisanci/medo_olesja.jpg"
+            alt="Medvjedić"
+          />
+        </div>
+
+        <div class="modal-right">
+          <label>Visina:</label>
+          <select id="select-visina"></select>
+
+          <label>Boja:</label>
+          <select id="select-boja"></select>
+
+          <label>Dodatak:</label>
+          <select id="select-dodatak"></select>
+
+          <p id="modal-price">Cijena: 0 €</p>
+          <label>Količina:</label>
+          <div class="qty-box">
+            <button class="qty-btn" id="qty-minus">−</button>
+            <span id="qty-number">1</span>
+            <button class="qty-btn" id="qty-plus">+</button>
+          </div>
+
+          <button id="modal-order-btn">Naruči</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/galerija.js"></script>
+  </body>
+</html>

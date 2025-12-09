@@ -1,0 +1,717 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(237, 236, 236);
+}
+
+footer a {
+  text-decoration: none;
+  margin-left: 20px;
+  box-shadow: 0 2px 4px black;
+  font-size: 16px;
+  padding: 5px;
+  background-color: rgb(242, 248, 253);
+  font-family: Segoe print;
+  border-radius: 5px;
+  color: #343333;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(227, 225, 222);
+  padding: 16px;
+  margin-top: 50px;
+}
+
+footer a:hover {
+  background-color: rgb(219, 236, 251);
+}
+
+h2 {
+  font-size: 35px;
+  font-family: Lucida caligraphy;
+  color: rgb(66, 62, 62);
+  background-color: rgb(227, 225, 222);
+  text-align: center;
+  padding: 16px;
+  box-shadow: 0 2px 4px black;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+h3 {
+  font-size: 30px;
+  color: rgb(57, 52, 52);
+  font-family: Lucida caligraphy;
+  margin-bottom: 0;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/*galerija*/
+.galerija3 {
+  position: relative;
+  width: 500px;
+  justify-self: center;
+  margin-top: 20px;
+  box-shadow: 2px 5px 3px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  margin-top: 8px;
+  margin-left: 5px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 30%;
+  width: auto;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 26px;
+  border-radius: 0 3px 3px 0;
+}
+
+.next {
+  right: 147px;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev {
+  margin-left: 4px;
+}
+
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.numbertext {
+  color: white;
+  font-size: 14px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 10px;
+}
+
+/* transparentnost malih sličica */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.layout-desno {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background-color: white;
+}
+
+/* Velika slika (slides) neka zauzme većinu prostora */
+.mySlides {
+  width: 70%;
+}
+
+/* Thumbnaili postaju stupac */
+.layout-desno .row {
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+}
+
+.layout-desno .column {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.layout-desno .column img {
+  width: 100%;
+  height: 80px; /* smanji thumbnail visinu */
+  object-fit: cover; /* da budu uredni */
+  border-radius: 4px;
+}
+
+.g1 {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+aside {
+  margin-left: 50px;
+}
+
+aside p {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.g2 {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.g2 .row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.g3 {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.g3 .row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.g3 .layout-desno .column img {
+  width: 100%;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.g3 .mySlides {
+  margin-top: 3px;
+}
+
+/*kartice za narudžbu*/
+aside {
+  margin-top: 20px;
+}
+.card-container {
+  display: flex;
+  justify-self: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  flex-basis: 30%;
+  margin-left: 5px;
+  margin-top: 40px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgb(0, 0, 0);
+  background-color: white;
+  width: 150px;
+  margin: 10px;
+  text-align: center;
+  font-family: Lucida caligraphy;
+  padding: 2px;
+  height: 330px;
+  border-radius: 5px;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: translateY(5px);
+}
+
+.card img {
+  max-width: 100px;
+  margin-top: 10px;
+  box-shadow: 0 1px 3px black;
+}
+
+.card p {
+  font-family: Lucida caligraphy;
+  margin: 10px;
+  font-size: 16px;
+}
+
+p {
+  text-align: center;
+  font-family: Segoe print;
+  color: #393838;
+  font-size: 20px;
+}
+
+h4 {
+  margin: 3px;
+  color: #343333;
+}
+
+/* Naslov proizvoda u košarici */
+#cart-sidebar #cart-items li strong:first-child {
+  font-size: 18px;
+  color: #5f4c4c;
+}
+
+.card button {
+  border-radius: 6px;
+  margin-top: 10px;
+  padding: 10px;
+  color: white;
+  background-color: #474747;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+  font-family: Lucida caligraphy;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+/*modal*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 8000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: rgb(251, 243, 243);
+  width: 500px;
+  max-width: 90%;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 4px 6px white;
+  justify-content: center;
+}
+
+.modal-left {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.modal-left img {
+  width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px black;
+  margin-top: 10px;
+}
+
+.modal-left h3 {
+  color: #393838;
+  text-align: center;
+}
+
+.modal-right {
+  margin-top: 25px;
+  margin-left: 50px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+select {
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #474747;
+}
+
+.close-modal {
+  font-size: 34px;
+  cursor: pointer;
+  position: absolute;
+  right: 500px;
+  top: 160px;
+  color: white;
+  z-index: 10000;
+}
+
+.close-modal:hover {
+  background-color: rgba(9, 9, 9, 0.3);
+  padding: 5px;
+}
+
+#modal-order-btn {
+  margin-top: 15px;
+  background-color: rgb(253, 247, 240);
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: Segoe print;
+  box-shadow: 0 2px 4px black;
+}
+
+#modal-order-btn:hover {
+  background-color: aliceblue;
+}
+
+label {
+  font-size: 18px;
+  font-family: Lucida caligraphy;
+  color: #322b2b;
+}
+
+.qty-btn {
+  cursor: pointer;
+}
+
+/* SIDEBAR KOŠARICA */
+#cart-toggle {
+  position: fixed;
+  top: 30px;
+  right: 18px;
+  z-index: 9300;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  cursor: pointer;
+  font-family: Segoe print, sans-serif;
+  font-size: 20px;
+  box-shadow: 0 2px 4px black;
+}
+
+#cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -360px; /* skriveno */
+  width: 340px;
+  max-width: 85%;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  box-sizing: border-box;
+  transition: right 0.3s ease;
+  z-index: 12000;
+  overflow-y: auto;
+}
+
+#cart-sidebar.open {
+  right: 0;
+}
+
+#cart-sidebar h3 {
+  text-align: center;
+  font-family: Segoe print;
+  color: #484444;
+  margin-bottom: 10px;
+}
+
+#cart-sidebar p {
+  font-family: Lucida caligraphy;
+}
+
+#cart-sidebar ul {
+  font-weight: bolder;
+  color: #393838;
+}
+
+#cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-info small {
+  display: block;
+}
+
+.remove-item {
+  background: #ff6b6b;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: Segoe print;
+}
+
+.remove-item:hover {
+  background: #ff4b4b;
+}
+
+.cart-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.cart-close:hover {
+  color: white;
+  background-color: rgba(57, 52, 52, 0.7);
+}
+
+/* CHECKOUT U SIDEBARU */
+.checkout-panel {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+  display: none;
+}
+
+.checkout-panel.show {
+  display: block;
+}
+
+.checkout-panel label {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.checkout-panel h3 {
+  font-size: 24px;
+}
+
+.checkout-panel input {
+  background-color: #fdfaf5;
+}
+
+.checkout-panel input,
+.checkout-panel select {
+  width: 100%;
+  padding: 4px 6px;
+  margin-top: 2px;
+  box-sizing: border-box;
+}
+
+#checkout-btn,
+#submit-order {
+  width: 100%;
+  margin-top: 6px;
+  padding: 4px;
+  border-radius: 6px;
+  border: none;
+  background-color: #605c5c;
+  color: white;
+  cursor: pointer;
+  font-family: Segoe print;
+  font-size: 20px;
+}
+
+#checkout-btn:hover,
+#submit-order:hover {
+  opacity: 0.9;
+}
+
+.order-message {
+  font-size: 15px;
+  margin-top: 6px;
+  color: #ff4b4b;
+}
+
+.qty-row {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  gap: 4px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #ddd;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.qty-btn:hover {
+  background: #ccc;
+}
+
+.qty-number {
+  font-size: 17px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/*Responzivnost*/
+
+@media (max-width: 1125px) {
+  .g1,
+  .g2,
+  .g3 {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 992px) {
+  /* glavni layout - galerija + aside ispod sebe */
+  .g1,
+  .g2,
+  .g3 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  aside {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .card-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .galerija3 {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .g3 .layout-desno .column img {
+    width: 100%;
+    height: 67px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .next {
+    left: 450px;
+  }
+
+  h2 {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 26px;
+    padding: 10px;
+  }
+
+  h3 {
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  /* slike: velika gore, mali thumbovi ispod */
+  .galerija3 {
+    flex-direction: column;
+  }
+
+  .mySlides {
+    width: 97%;
+  }
+
+  .mySlides img {
+    height: 500px;
+  }
+
+  .layout-desno .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 6px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 2px;
+  }
+
+  /* strelice malo bliže rubu na mobitelu */
+  .prev,
+  .next {
+    top: 45%;
+  }
+
+  .prev {
+    left: 10px;
+    margin-left: 0;
+  }
+
+  .next {
+    right: 10px;
+  }
+
+  .card {
+    max-width: 130px;
+  }
+
+  footer a {
+    font-size: 14px;
+    margin: 4px;
+    padding: 4px 6px;
+  }
+
+  /* košarica preko cijelog ekrana */
+  #cart-sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #cart-toggle {
+    right: 10px;
+    top: 10px;
+    font-size: 16px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  #cart-sidebar {
+    right: -100% !important; /* uvijek skriven */
+  }
+
+  #cart-sidebar.open {
+    right: 0 !important; /* pokaže se samo kad klikneš gumb */
+  }
+
+  #cart-toggle {
+    top: 25px;
+    right: 10px;
+    font-size: 16px;
+    padding: 4px 10px;
+  }
+}

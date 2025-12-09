@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/galerija.css" />
+    <title>Gnomovi i snjegovići</title>
+    <link rel="icon" type="image/favicon" href="projekt-slike/logo.ps.jpg" />
+  </head>
+  <body>
+    <button id="cart-toggle">
+      🛒 Košarica (<span id="cart-count">0</span>)
+    </button>
+
+    <div id="cart-sidebar">
+      <button id="cart-close" class="cart-close">x</button>
+      <h3>Vaša košarica</h3>
+
+      <ul id="cart-items"></ul>
+
+      <p>
+        <strong>Ukupno artikala: </strong><span id="cart-items-total">0</span>
+      </p>
+      <p><strong>Ukupna cijena: </strong><span id="cart-total">0 €</span></p>
+
+      <button id="checkout-btn">Naruči</button>
+
+      <!-- Checkout panel (skriven dok ne kliknemo Naruči) -->
+      <div id="checkout-panel" class="checkout-panel">
+        <h3>Podaci za narudžbu</h3>
+
+        <label
+          >Ime i prezime:
+          <input type="text" id="cust-name" required />
+        </label>
+
+        <label
+          >Email:
+          <input type="email" id="cust-email" required />
+        </label>
+
+        <label
+          >Telefon:
+          <input type="tel" id="cust-phone" required />
+        </label>
+
+        <label
+          >Adresa:
+          <input type="text" id="cust-address" required />
+        </label>
+
+        <label
+          >Grad:
+          <input type="text" id="cust-city" required />
+        </label>
+
+        <label
+          >Dostava:
+          <select id="cust-delivery">
+            <option value="GLS">GLS</option>
+            <option value="HP Express">HP Express</option>
+            <option value="Osobno preuzimanje">Osobno preuzimanje</option>
+          </select>
+        </label>
+
+        <label
+          >Plaćanje:
+          <select id="cust-payment">
+            <option value="Pouzeće">Pouzeće</option>
+            <option value="Gotovina pri preuzimanju">
+              Gotovina pri preuzimanju
+            </option>
+            <option value="Uplata na račun">Uplata na račun</option>
+          </select>
+        </label>
+
+        <button id="submit-order">Pošalji narudžbu</button>
+        <p id="order-message" class="order-message"></p>
+      </div>
+    </div>
+
+    <h2>Gnomovi i snjegovići</h2>
+
+    <main class="g2">
+      <div>
+        <h3>Galerija slika</h3>
+        <div class="galerija3 layout-desno">
+          <div class="mySlides">
+            <div class="numbertext">1 / 9</div>
+            <img
+              src="projekt-slike/gnomovi/bijeli_gnomovi.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">2 / 9</div>
+            <img
+              src="projekt-slike/gnomovi/gnom_hajduk.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">3 / 9</div>
+            <img
+              src="projekt-slike/gnomovi/gnom_i_vijenac.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">4 / 9</div>
+            <img
+              src="projekt-slike/gnomovi/gnom_komplet.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">5 / 9</div>
+            <img
+              src="projekt-slike/gnomovi/jesenski_gnom.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">6 / 9</div>
+            <img
+              src="projekt-slike/gnomovi/manji_snjegovic.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">7 / 9</div>
+            <img
+              src="projekt-slike/gnomovi/snjegovici.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">8 / 9</div>
+            <img
+              src="projekt-slike/gnomovi/veliki_snjegovic.jpg"
+              style="width: 100%"
+            />
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">9 / 9</div>
+            <img
+              src="projekt-slike/gnomovi/zeleni_gnomovi.jpg"
+              style="width: 100%"
+            />
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          <!-- Thumbnail slike -->
+          <div class="row">
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/gnomovi/bijeli_gnomovi.jpg"
+                style="width: 100%"
+                onclick="currentSlide(1)"
+                alt="Bijeli gnomovi"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/gnomovi/gnom_hajduk.jpg"
+                style="width: 100%"
+                onclick="currentSlide(2)"
+                alt="Gnom Hajduk"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/gnomovi/gnom_i_vijenac.jpg"
+                style="width: 100%"
+                onclick="currentSlide(3)"
+                alt="Gnom i vijenac"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/gnomovi/gnom_komplet.jpg"
+                style="width: 100%"
+                onclick="currentSlide(4)"
+                alt="Gnom komplet"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/gnomovi/jesenski_gnom.jpg"
+                style="width: 100%"
+                onclick="currentSlide(5)"
+                alt="Jesenski gnom"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/gnomovi/manji_snjegovic.jpg"
+                style="width: 100%"
+                onclick="currentSlide(6)"
+                alt="Snjegović"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/gnomovi/snjegovici.jpg"
+                style="width: 100%"
+                onclick="currentSlide(7)"
+                alt="Snjegovići"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/gnomovi/veliki_snjegovic.jpg"
+                style="width: 100%"
+                onclick="currentSlide(8)"
+                alt="Snjegović"
+              />
+            </div>
+            <div class="column">
+              <img
+                class="demo cursor"
+                src="projekt-slike/gnomovi/zeleni_gnomovi.jpg"
+                style="width: 100%"
+                onclick="currentSlide(9)"
+                alt="Zeleni gnomovi"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside>
+        <p>Naručite svog <strong>Gnoma</strong>!</p>
+        <div class="card-container">
+          <div
+            class="card"
+            data-id="gnom"
+            data-name="Gnom"
+            data-price_50="25"
+            data-price_70="30"
+            data-price_90="35"
+            data-visine="50cm,70cm,90cm"
+            data-boje="bijela,crna,zelena,plava,roza,smeđa,bež"
+            data-dodaci="bez,lanterna,torbica,kuglica,drvo"
+          >
+            <img
+              src="projekt-slike/gnomovi/zeleni_gnomovi.jpg"
+              alt="Zeleni gnomovi"
+            />
+            <h4>Gnom</h4>
+            <p>Boju, visinu i dodatke svojih gnomova birate sami...</p>
+            <button class="button">Odaberite</button>
+          </div>
+          <div
+            class="card"
+            data-id="snjegovic"
+            data-name="Snjegovic"
+            data-price_50="25"
+            data-price_70="30"
+            data-price_90="35"
+            data-visine="50cm,70cm,90cm"
+            data-boje="bijela,crna,zelena,plava,roza,smeđa,bež"
+            data-dodaci="bez,drvo"
+          >
+            <img
+              src="projekt-slike/gnomovi/veliki_snjegovic.jpg"
+              alt="Veliki snjegović"
+            />
+            <h4>Snjegović</h4>
+
+            <p>Boju, visinu i dodatke svojih gnomova birate sami...</p>
+            <button class="button">Odaberite</button>
+          </div>
+          <div
+            class="card"
+            data-id="gnom-set"
+            data-name="Gnom-set"
+            data-price_50="40"
+            data-price_70="45"
+            data-price_90="50"
+            data-visine="50cm,70cm,90cm"
+            data-boje="bijela,crna,zelena,plava,roza,smeđa,bež"
+            data-dodaci="bez,lanterna,torbica,kuglica,drvo"
+          >
+            <img
+              src="projekt-slike/gnomovi/gnom_i_vijenac.jpg"
+              alt="Gnom i vijenac"
+            />
+            <h4>Gnom set</h4>
+
+            <p>Boju, visinu i dodatke svojih gnomova birate sami...</p>
+
+            <button class="button">Odaberite</button>
+          </div>
+          <br />
+        </div>
+      </aside>
+    </main>
+    <footer class="dalje">
+      <a href="index.html">Početna</a>
+      <a href="memo.html">Memory</a>
+      <a href="art.html">Oslikavanje stakla</a>
+      <a href="print.html">Print</a>
+      <a href="naljepnice.html">Naljepnice</a>
+    </footer>
+
+    <!-- POPUP ZA NARUDŽBU -->
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <div class="modal-left">
+          <h3 id="modal-product-name"></h3>
+          <img
+            id="modal-product-image"
+            src="projekt-slike/gnomovi/bijeli_gnomovi.jpg"
+            alt="Bijeli gnomovi"
+          />
+        </div>
+
+        <div class="modal-right">
+          <label>Visina:</label>
+          <select id="select-visina"></select>
+
+          <label>Boja:</label>
+          <select id="select-boja"></select>
+
+          <label>Dodatak:</label>
+          <select id="select-dodatak"></select>
+
+          <p id="modal-price">Cijena: 0 €</p>
+          <label>Količina:</label>
+          <div class="qty-box">
+            <button class="qty-btn" id="qty-minus">−</button>
+            <span id="qty-number">1</span>
+            <button class="qty-btn" id="qty-plus">+</button>
+          </div>
+
+          <button id="modal-order-btn">Naruči</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/galerija.js"></script>
+  </body>
+</html>

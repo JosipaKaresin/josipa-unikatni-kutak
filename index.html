@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Unikatni kutak JK</title>
+    <meta
+      name="description"
+      content="Unikatni pokloni, oslikavanje stakla,suveniri, memory plišanci, personalizirani radovi i dekoracije ručne izrade. Izrada po narudžbi, gnomovi, čaše, memory plišanci."
+    />
+    <meta
+      name="keywords"
+      content="unikatni pokloni, oslikavanje stakla, memory plišanci, gnomovi, personalizirani pokloni, pokloni po narudžbi, ručni rad, suveniri, dekoracije"
+    />
+    <meta name="author" content="Unikatni kutak JK" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      id="logo"
+      rel="icon"
+      type="image/favicon"
+      href="projekt-slike/logo.ps.jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header id="zaglavlje">
+      <h1 class="glow">Unikatni kutak JK</h1>
+    </header>
+    <main>
+      <nav>
+        <img
+          id="logo"
+          src="projekt-slike/logo.ps.jpg"
+          alt="logo"
+          width="160px"
+          height="100px"
+        />
+
+        <ul class="nav">
+          <li class="dropdown">
+            <button onclick="toggleDropdown(event)">Meni</button>
+            <ul class="subnav">
+              <li>
+                <a href="art.html">Oslikavanje stakla</a>
+              </li>
+              <li>
+                <a href="memo.html">Memory plišanci</a>
+              </li>
+              <li>
+                <a href="naljepnice.html">Naljepnice</a>
+              </li>
+              <li>
+                <a href="print.html">Print</a>
+              </li>
+              <li>
+                <a href="gnom.html">Gnomovi</a>
+              </li>
+              <span class="close" onclick="closeDropdown(this)">&times;</span>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <button onclick="toggleDropdown(event)">Kontakt</button>
+            <ul class="subnav">
+              <li><a href="+385955045042">Telefon</a></li>
+              <li>
+                <a href="mailto:unikatni.kutak.jk@gmail.com">Email</a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/?locale=hr_HR">Facebook</a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/unikatni_kutak_jk/"
+                  >Instagram</a
+                >
+              </li>
+              <span class="close" onclick="closeDropdown(this)">&times;</span>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <button onclick="toggleDropdown(event)">Prijava/odjava</button>
+            <ul class="subnav">
+              <li>
+                <div class="container2">
+                  <div id="auth">
+                    <h2>Prijava/registracija</h2>
+                    <input id="email" type="email" placeholder="Email" />
+                    <input
+                      id="password"
+                      type="password"
+                      placeholder="Lozinka"
+                    />
+                    <button id="btnLogin">Prijavi se</button>
+                    <button id="btnRegister">Registriraj se</button>
+                  </div>
+                  <div id="app">
+                    <h2 id="dobrodosli">Dobrodošli!</h2>
+                    <button id="btnLogout">Odjavi se</button>
+                    <hr />
+                    <h3>Stavke</h3>
+                    <input
+                      id="itemInput"
+                      type="text"
+                      placeholder="Unesite stavku"
+                    />
+                    <button id="btnAdd">Dodaj</button>
+                    <ul id="dataList"></ul>
+                  </div>
+                </div>
+              </li>
+              <span class="close" onclick="closeDropdown(this)">&times;</span>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <button onclick="toggleDropdown(event)">Karta</button>
+            <ul class="subnav">
+              <li><div id="map"></div></li>
+              <span class="close" onclick="closeDropdown(this)">&times;</span>
+            </ul>
+          </li>
+        </ul>
+        <p id="datetime"></p>
+      </nav>
+      <div class="flex-container">
+        <div class="main-container">
+          <div class="container">
+            <h2>Personalizirani pokloni, suveniri i dekoracije...</h2>
+            <h3>Oslikavanje stakla</h3>
+            <div>
+              <img
+                src="projekt-slike/oslikavanje-stakla/plavi_cvjetovi.jpg"
+                alt="čaše komplet"
+                width="200px"
+                height="270px"
+              />
+              <p>
+                Oslikavanj stakla je započelo željom da iskorištene, a predivne
+                boce stavim ponovno u upotrebu. Uz malo istraživanja naišla sam
+                na ideju oslikavanja stakla. Ta ideja se savršeno uklopila s
+                mojim kreativnim duhom te je sve krenulo kao hobi i otpuštanje
+                nakupljenog stresa. Sada oslikavam sve; boce, čaše i šalice s
+                prigodnim natpisima po želji.
+              </p>
+              <a id="vise" href="art.html" target="_parent">Više...</a>
+            </div>
+          </div>
+          <hr />
+          <div class="container">
+            <h3>Memory plišanci</h3>
+            <div class="memo">
+              <img
+                src="projekt-slike\memory-plisanci\medo_olesja.jpg"
+                alt="Medvjedić"
+                width="200"
+                height="270"
+              />
+              <p>
+                Memory plišanci se izrađuju od raznih materijala koje je nosila
+                osoba za koju želimo uspomenu. Npr. bebina odjeća, dekica i sl.
+                postaju materijali od kojih izrađujemo plišance u različitim
+                dimenzijama i visinama s printom po želji.
+              </p>
+              <a id="vise" href="memo.html" target="_parent">Više...</a>
+            </div>
+          </div>
+          <hr />
+          <div class="container">
+            <h3>Naljepnice</h3>
+            <div>
+              <img
+                src="projekt-slike/naljepnice/ploca-krstenje.jpg"
+                alt="Ploča za krštenje"
+                width="200"
+                height="270"
+              />
+              <p>
+                Naljepnice radimo na većinom svim materijalima koji imaju
+                mogućnost ljepljenja. Predmet može biti Vaš ili naš, a radimo ih
+                u svim bojama. Mogu se izraditi prigodni darovi, ploče
+                dobrodošlice za sve prigode, kutije za vjenčane darove..
+                Prednost im je što se mogu skinuti i predmet je ponovno u
+                upotrebi.
+              </p>
+              <a id="vise" href="naljepnice.html" target="_parent">Više...</a>
+            </div>
+          </div>
+          <hr />
+          <div class="container">
+            <h3>Print</h3>
+            <div class="memo">
+              <img
+                src="projekt-slike/print/rokovnik-komplet.jpg"
+                alt="Rokovnik"
+                width="200"
+                height="270"
+              />
+              <p>
+                Usluge printa obavljamo na više vrsta materijala i predmeta,
+                mogu biti naši ili Vaši. Mogu biti maštoviti darovi za rođendane
+                i sve ostale prigode, uspomene... Usluga se odrađuje u dogovoru
+                s Vama, odnosno sami birate boju i dizajn.
+              </p>
+              <a id="vise" href="print.html" target="_parent">Više...</a>
+            </div>
+          </div>
+          <hr />
+          <div class="container">
+            <h3>Gnomovi i snjegovići</h3>
+            <div>
+              <img
+                src="projekt-slike/gnomovi/zeleni_gnomovi.jpg"
+                alt="Gnomovi"
+                width="200"
+                height="270"
+              />
+              <p>
+                Gnomove izrađujemo u različitim veličinama i od raznim
+                materijala. Prilikom izrade sami birate veličinu i kako će
+                izgledati na osnovu ponuđenih slika u galeriji ili prema nekoj
+                vašoj ideji. Uz njih mogu ići i u kompletu adventski vijenci.
+                Dekoriraju i unose božićni duh u Vaše domove.
+              </p>
+              <a id="vise" href="gnom.html" target="_parent">Više...</a>
+            </div>
+          </div>
+          <hr />
+        </div>
+        <aside>
+          <p>
+            <b>Unikatni kutak JK</b> je obrt za izradu personaliziranih poklona
+            suvenira i dekoracija.<br />
+            Adresa: Slavonski Brod 35000<br />
+            Augustina Kažotića 157
+          </p>
+          <form>
+            <label id="msg" for="message"> Nešto Vas zanima?<br /> </label>
+
+            <button class="upit">
+              <a href="pitaj.html" target="_parent">Pitajte!</a>
+            </button>
+          </form>
+          <section id="komentari" class="komentar-sekcija">
+            <form id="komentarForm" class="komentar-forma">
+              <label>Ostavite svoj komentar</label>
+              <input
+                id="komentarInput"
+                type="text"
+                placeholder="Tekst..."
+                required
+              />
+              <button class="comm" type="submit">Pošalji</button>
+            </form>
+            <div id="komentarOkvir" class="komentar-okvir">
+              <ul id="komentarLista" class="komentar-lista"></ul>
+            </div>
+          </section>
+          <p class="soc">Pridružite nam se na:</p>
+          <div class="social-icon">
+            <a
+              href="https://www.facebook.com/?locale=hr_HR"
+              target="_blank"
+              aria-label="Facebook"
+              >Facebook
+              <i class="fab fa-facebook"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/unikatni_kutak_jk/"
+              target="_blank"
+              aria-label="Instagram"
+              >Instagram
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.pinterest.com/"
+              target="_blank"
+              aria-label="Pinterest"
+              >Pinterest
+              <i class="fab fa-pinterest"></i>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <footer>
+      <div class="prava">
+        <p class="kraj">Obratite nam se s povjerenjem!</p>
+        <a class="natrag" href="#" target="_top">Natrag na početak</a>
+        <p>&copy; Unikatni kutak JK 2025. Sva prava pridržana</p>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database-compat.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
