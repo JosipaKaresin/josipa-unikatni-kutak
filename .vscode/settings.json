@@ -1,3 +1,28 @@
 {
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.firebase/**": true,
+    "**/projekt-slike/**": true
+  },
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.firebase": true,
+    "**/dist": true,
+    "**/build": true
+  },
+
+  "liveServer.settings.ignoreFiles": [
+    "**/projekt-slike/**",
+    "**/node_modules/**",
+    "**/.git/**"
+  ],
+
+  "eslint.enable": false,
+  "liveServer.settings.noCssInjection": true
 }
