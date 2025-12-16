@@ -1031,7 +1031,7 @@ footer a {
 
 /* kutija forme u modalu */
 .forma-dropdown .container2 {
-  margin-top: 0; /* <-- makni ono što gura dolje */
+  margin-top: 0;
   width: 100%;
   max-width: 400px;
   padding: 18px;
