@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/galerija.css" />
     <title>Print</title>
-    <link rel="icon" type="image/favicon" href="projekt-slike/logo.ps.jpg" />
+    <link rel="icon" type="image/favicon" href="projekt-slike/logo.jpg" />
   </head>
   <body>
     <button id="cart-toggle">
@@ -80,7 +80,7 @@
     </div>
     <h2>Print</h2>
 
-    <main class="g2">
+    <main class="g2 print">
       <div>
         <h3>Galerija slika</h3>
         <div class="galerija3 layout-desno">
@@ -217,7 +217,7 @@
             data-boje="bijela,crna,zelena,plava,roza,smeđa,bež,zlatna,srebrna"
             data-dodaci="bez,posebna priprema"
           >
-            <img src="projekt-slike/print/pidjama.jpg" alt="Bodiji" />
+            <img src="projekt-slike/print/pidjama.jpg" alt="Pidžama" />
             <h4>Odjeća</h4>
             <p>Boju, visinu i dizajn printa birate sami ...</p>
             <button class="button">Odaberite</button>
@@ -247,10 +247,10 @@
         </div>
       </aside>
     </main>
-    <footer>
+    <footer class="dalje">
       <a href="index.html">Početna</a>
       <a href="memo.html">Memory</a>
-      <a href="art.html">Oslikavanje stakla</a>
+      <a href="art.html">Staklo</a>
       <a href="naljepnice.html">Naljepnice</a>
       <a href="gnom.html">Gnomovi</a>
     </footer>
@@ -290,6 +290,7 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="js/cart.js"></script>

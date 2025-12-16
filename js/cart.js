@@ -1,8 +1,4 @@
-console.log("CART.JS SE LOADA!");
-
-// -----------------------------------
 // FIREBASE
-// -----------------------------------
 const firebaseConfig = {
   apiKey: "AIzaSyA2aRuGIW3jQjCqnd6hcWAk8TXsS7wmJm4",
   authDomain: "unikatni-kutak-jk-394e6.firebaseapp.com",
@@ -13,12 +9,12 @@ const firebaseConfig = {
   measurementId: "G-4BWKK0EN4W",
 };
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 const db = firebase.firestore();
 
-// -----------------------------------
 // LOCALSTORAGE
-// -----------------------------------
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -27,18 +23,14 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// -----------------------------------
-// KOŠARICA UPDATE BUBBLE
-// -----------------------------------
+// KOŠARICA UPDATE BROJAČA
 function updateCartCount() {
   const cart = getCart();
   const count = cart.reduce((sum, item) => sum + item.kolicina, 0);
   document.getElementById("cart-count").textContent = count;
 }
 
-// -----------------------------------
 // RENDER KOŠARICE
-// -----------------------------------
 function renderCart() {
   const cart = getCart();
 
@@ -46,9 +38,9 @@ function renderCart() {
   const totalBox = document.getElementById("cart-total");
   const qtyBox = document.getElementById("cart-items-total");
 
-  list.innerHTML = "";
+  list.innerHTML = ""; //briše staro da se ne dupla
 
-  let total = 0;
+  let total = 0; //početno
   let totalQty = 0;
 
   cart.forEach((item, index) => {
@@ -61,7 +53,7 @@ function renderCart() {
         Dodatak: ${item.dodatak}<br>
 
         <div class="qty-row">
-            <button class="qty-btn minus" data-index="${index}">−</button>
+            <button class="qty-btn minus" data-index="${index}">-</button>
             <span class="qty-number">${item.kolicina}</span>
             <button class="qty-btn plus" data-index="${index}">+</button>
         </div>
@@ -86,7 +78,7 @@ function renderCart() {
   document.querySelectorAll(".remove-item").forEach((btn) => {
     btn.addEventListener("click", () => {
       const cart = getCart();
-      cart.splice(btn.dataset.index, 1);
+      cart.splice(btn.dataset.index, 1); //briše 1 element na nizu
       saveCart(cart);
       renderCart();
       updateCartCount();
@@ -110,6 +102,7 @@ function renderCart() {
       const cart = getCart();
       cart[btn.dataset.index].kolicina--;
       if (cart[btn.dataset.index].kolicina < 1)
+        //ne dopušta ispo 1
         cart[btn.dataset.index].kolicina = 1;
       saveCart(cart);
       renderCart();
@@ -134,13 +127,11 @@ const selectDodatak = document.getElementById("select-dodatak");
 const priceBox = document.getElementById("modal-price");
 const qtyNumber = document.getElementById("qty-number");
 
-// -----------------------------------
-// FUNKCIJE ZA MODAL
-// -----------------------------------
+///popunjava select iz stringa
 function fillSelect(select, string) {
   select.innerHTML = "";
   string.split(",").forEach((v) => {
-    const o = document.createElement("option");
+    const o = document.createElement("option"); //kreiran option
     o.value = v;
     o.textContent = v;
     select.appendChild(o);
@@ -154,7 +145,7 @@ function updateModalPrice() {
   // dataset pretvara "-" u "_" + točka mora biti "_"
   let datasetKey = "price_" + cleaned.replace(".", "_");
 
-  const doplata = selectDodatak.value === "bez" ? 0 : 5;
+  const doplata = selectDodatak.value === "bez" ? 0 : 5; //+ 5€ ako nije bez
 
   const basePrice = Number(currentCard.dataset[datasetKey]) || 0;
 
@@ -162,7 +153,7 @@ function updateModalPrice() {
 }
 
 // -----------------------------------
-// EVENT: OTVORI MODAL (IZ CARD)
+// OTVORI MODAL (IZ CARD)
 // -----------------------------------
 document.querySelectorAll(".card .button").forEach((btn) => {
   btn.addEventListener("click", function () {
@@ -179,7 +170,7 @@ document.querySelectorAll(".card .button").forEach((btn) => {
 
     updateModalPrice();
 
-    modal.classList.add("show");
+    modal.classList.add("show"); //dodavanja klase show da se modal prikaže
   });
 });
 
@@ -187,11 +178,10 @@ document.querySelector(".close-modal").addEventListener("click", () => {
   modal.classList.remove("show");
 });
 
-// -----------------------------------
 // EVENT: PLUS / MINUS
-// -----------------------------------
+
 document.getElementById("qty-plus").addEventListener("click", () => {
-  qtyNumber.textContent = Number(qtyNumber.textContent) + 1;
+  qtyNumber.textContent = Number(qtyNumber.textContent) + 1; //čita broj iz spana
 });
 
 document.getElementById("qty-minus").addEventListener("click", () => {
@@ -203,7 +193,7 @@ selectVisina.addEventListener("change", updateModalPrice);
 selectDodatak.addEventListener("change", updateModalPrice);
 
 // -----------------------------------
-// EVENT: NARUČI → košarica
+// EVENT: NARUČI - košarica
 // -----------------------------------
 document.getElementById("modal-order-btn").addEventListener("click", () => {
   if (!currentCard) return;
@@ -237,7 +227,14 @@ document.getElementById("modal-order-btn").addEventListener("click", () => {
 
   const cart = getCart();
   cart.push(product);
-  saveCart(cart);
+  saveCart(cart); //spreme lokalno
+
+  Swal.fire({
+    icon: "success",
+    title: "Proizvod je dodan u košaricu!",
+    showConfirmButton: false,
+    timer: 3000,
+  });
 
   renderCart();
   updateCartCount();
@@ -297,8 +294,10 @@ document.getElementById("submit-order").addEventListener("click", async () => {
     delivery: document.getElementById("cust-delivery").value,
     payment: document.getElementById("cust-payment").value,
 
-    createdAt: new Date(),
-  };
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    status: "novo",
+  }; //da admin može pratiti
 
   await db.collection("orders").add(order);
 
@@ -307,7 +306,7 @@ document.getElementById("submit-order").addEventListener("click", async () => {
   renderCart();
   updateCartCount();
 
-  // isprazni formu
+  // pražnjenje forme
   document.getElementById("cust-name").value = "";
   document.getElementById("cust-email").value = "";
   document.getElementById("cust-phone").value = "";
@@ -321,7 +320,7 @@ document.getElementById("submit-order").addEventListener("click", async () => {
     document.getElementById("order-message").textContent = "";
     document.getElementById("checkout-panel").classList.remove("show");
 
-    // 3. Po želji resetiraj polja forme
+    //  Po želji resetiranje polja forme
     document.getElementById("cust-name").value = "";
     document.getElementById("cust-email").value = "";
     document.getElementById("cust-phone").value = "";
@@ -332,8 +331,5 @@ document.getElementById("submit-order").addEventListener("click", async () => {
   }, 4000);
 });
 
-// -----------------------------------
-// POČETNO UČITAVANJE
-// -----------------------------------
 updateCartCount();
-renderCart();
+renderCart(); //kad se stranica učita pokaže se košarica prema local storage

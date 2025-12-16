@@ -3,14 +3,15 @@
 }
 
 body {
-  margin: 15px;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  background-color: rgb(250, 250, 243);
+  background-color: rgb(249, 249, 246);
 }
 
 #zaglavlje {
-  height: 600px;
+  height: 500px;
+  width: auto;
   background: url("../projekt-slike/oslikavanje-stakla/casa-ruza.jpg") no-repeat
     fixed center center/cover;
   color: white;
@@ -20,18 +21,15 @@ body {
 }
 
 #datetime {
-  margin: 15px 0 0 30px;
   padding: 0;
   font-size: 22px;
   color: rgb(48, 47, 47);
   font-weight: bold;
-}
-
-h1 {
-  margin-top: 300px;
+  margin-left: 60px;
 }
 
 .glow {
+  margin-top: 300px;
   font-size: 80px;
   color: #fff;
   text-align: center;
@@ -53,9 +51,12 @@ h1 {
 
 nav {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-#logo {
+.logo {
   margin-left: 10px;
   margin-top: 5px;
 }
@@ -63,21 +64,21 @@ nav {
 .nav {
   list-style: none;
   display: flex;
+  justify-content: center;
+  align-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  background-color: rgb(249, 249, 246);
 }
 
 .nav li {
   position: relative;
 }
 
-.nav button {
-  display: block;
-  padding: 14px 20px;
-  color: rgb(71, 62, 62);
-  width: 150px;
-}
-
 .nav button:hover {
   background-color: aliceblue;
+  transform: scale(1.1);
 }
 
 .subnav {
@@ -87,7 +88,7 @@ nav {
   left: 0;
   background-color: #5e5d5d;
   list-style: none;
-  padding: 10px;
+  padding: 5px;
   margin: 0;
   border-radius: 8px;
   min-width: 200px;
@@ -97,7 +98,7 @@ nav {
 
 .subnav li {
   color: rgb(254, 243, 243);
-  padding: 8px;
+  padding: 5px;
 }
 
 .subnav a {
@@ -121,6 +122,10 @@ nav {
   font-weight: bold;
 }
 
+.close:hover {
+  transform: scale(1.3);
+}
+
 .subnav a:hover {
   text-decoration: underline;
 }
@@ -130,22 +135,24 @@ nav {
   display: block;
 }
 .dropdown > button {
+  width: 160px;
   padding: 0.5em;
   display: flex;
-  margin-left: 50px;
+  margin-left: 30px;
   text-decoration: none;
   color: rgb(87, 77, 64);
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(42, 42, 41, 0.929);
   background-color: rgb(255, 255, 254);
   font-family: Segoe print;
-  border-radius: 8px;
+  border-radius: 5px;
   font-size: 18px;
   justify-content: center;
+  border: none;
 }
 
 #map {
-  height: 200px;
+  height: 400px;
   width: 100%;
   border-radius: 10px;
   margin-top: 10px;
@@ -226,7 +233,8 @@ hr {
 }
 
 .container a:hover {
-  background-color: rgb(171, 207, 239);
+  background-color: rgb(179, 216, 249);
+  transform: scale(1.08);
 }
 
 aside {
@@ -234,6 +242,7 @@ aside {
   display: flex;
   flex-direction: column;
   align-content: center;
+
   flex-basis: 24%;
   background-color: rgb(195, 193, 190);
   border: 1px solid black;
@@ -366,10 +375,11 @@ footer a {
 /*prijava*/
 .container2 {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   background: rgb(254, 251, 251);
-  margin-top: 40px;
+  margin-top: 30px;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -379,11 +389,27 @@ footer a {
 .container2 input {
   width: 100%;
   padding: 10px;
-  margin: 5px 0px 15px;
+  margin: 5px 0 15px;
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 14px;
   font-family: Segoe print;
+}
+
+.container2 input:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: #15495f;
+  box-shadow: 0 0 0 3px rgba(98, 148, 165, 0.25);
+}
+
+.container2 input:hover {
+  background-color: #f2f6f8;
+  border-color: #6294a5;
+}
+
+#passwordConfirm {
+  display: none;
 }
 
 .container2 button {
@@ -406,32 +432,175 @@ footer a {
 
 .container2 button:hover {
   background-color: #15495f;
+  transform: scale(1.02);
 }
 
 #app {
   display: none;
 }
 
-.container2 ul {
-  list-style: none;
-  padding: 0;
+.forma-dropdown h2 {
+  margin: 0 0 15px 0;
+  padding: 10px;
+  font-size: 22px;
+  width: 100%;
 }
 
-.container2 li {
-  background-color: #f8f8f8;
-  margin-bottom: 6px;
+/*komentari*/
+.komentar-sekcija {
+  width: 90%;
+  max-width: 700px;
+  margin: 30px auto;
+  background-color: #888686;
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 10px;
+  box-shadow: 0 5px 8px rgb(0, 0, 0);
+  font-family: Segoe Print, sans-serif;
+}
+
+.komentar-forma {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.comm {
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  font-family: Segoe print;
+  background-color: #ddd8d8;
+  border: none;
+}
+
+.comm:hover {
+  background-color: #bdb9b9;
+}
+
+/* Prozor za komentare */
+.komentar-okvir {
+  margin: 20px auto 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f1f0ea;
+  padding: 5px;
+  height: 500px;
+  overflow-y: auto; /* scroll ako ima puno komentara */
+  box-shadow: 0 2px 5px rgba(255, 255, 253, 0.5);
+  font-size: 13px;
+}
+
+.komentar-lista strong {
+  color: #292828;
+  display: block;
+}
+
+.komentar-lista span {
+  color: gray;
+  font-size: 0.85em;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/*pitaj*/
+.upit {
+  padding: 10px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+.upit a {
+  text-decoration: none;
+  color: #444444;
+  font-family: Segoe print;
+}
+
+.upit:hover {
+  background-color: aliceblue;
+  transform: scale(1.08);
+}
+
+#pitaj {
+  background-color: #b6b0b0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.container2 li button {
-  width: auto;
-  font-size: 12px;
-  padding: 6px 10px;
-  margin-left: 5px;
+#pitaj h1 {
+  color: #444;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 50px;
+  font-family: Lucida caligraphy;
+  text-shadow: 0 2px 4px white;
+}
+
+#pitaj p {
+  color: #292828;
+  font-size: 22px;
+  margin: 0;
+  text-decoration: wavy;
+  text-align: center;
+}
+
+#pitaj form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 15px;
+  align-items: center;
+}
+
+#pitaj input {
+  margin-top: 0;
+  width: 400px;
+  border: none;
+}
+
+#pitaj input:hover {
+  transform: scaleX(1.03);
+}
+
+#pitaj button {
+  width: fit-content;
+  align-content: center;
+  border-radius: 7px;
+  font-family: Segoe print;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 3px 6px black;
+  margin-top: 5px;
+}
+
+#pitaj button:hover {
+  background-color: aliceblue;
+  transform: scale(1.05);
+}
+
+#pitaj a {
+  text-decoration: none;
+  font-size: 18px;
+  font-family: Segoe print;
+  box-shadow: 0 3px 6px #292828;
+  border-radius: 8px;
+  background-color: rgb(203, 203, 203);
+  padding: 5px;
+  color: #292828;
+  margin-top: 5px;
+}
+
+#pitaj a:hover {
+  transform: scaleX(1.05);
+  background-color: rgb(223, 220, 216);
+}
+
+#pitaj textarea {
+  box-shadow: 0 3px 6px rgba(23, 23, 23, 0.5);
 }
 
 /*fontovi*/
@@ -453,6 +622,10 @@ footer a {
 
   #zaglavlje h1 {
     font-size: 48px;
+  }
+
+  .logo {
+    display: none;
   }
 
   .container {
@@ -494,6 +667,8 @@ footer a {
   .container2 input,
   .container2 button {
     font-size: 14px;
+    width: 90%;
+    margin-left: 17px;
   }
 
   .close {
@@ -501,11 +676,14 @@ footer a {
   }
 }
 
-/* Za tablete i ekrane do 1024px širine */
 @media (max-width: 1170px) {
   header {
     height: 500px;
     background-attachment: scroll;
+  }
+
+  .logo {
+    display: none;
   }
 
   h1 {
@@ -520,6 +698,13 @@ footer a {
   .nav button {
     width: 120px;
     font-size: 15px;
+  }
+
+  .container2 input,
+  .container2 button {
+    font-size: 14px;
+    width: 90%;
+    margin-left: 17px;
   }
 
   .flex-container {
@@ -542,11 +727,10 @@ footer a {
 }
 
 .dalje a {
-  font-size: 18spx;
+  font-size: 18px;
   padding: 5px;
 }
 
-/* Za mobitele do 768px širine */
 @media (max-width: 986px) {
   body {
     margin: 5px;
@@ -563,45 +747,43 @@ footer a {
   }
 
   nav {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .nav {
     flex-direction: row;
+    flex-wrap: wrap;
     margin: 5px 0;
-    gap: 5px;
+    gap: 10px;
     padding-left: 10px;
   }
 
-  #logo {
+  .logo {
     display: none;
   }
 
   #datetime {
     margin-top: 5px;
     font-size: 17px;
-    margin: 0;
+    margin: 20px;
   }
 
   .nav button {
-    width: 85%;
+    width: 110px;
     margin: 10px 0;
-    font-size: 16px;
-  }
-
-  .subnav {
-    position: static;
-    width: 100%;
+    font-size: 14px;
   }
 
   .close {
     position: absolute;
-    top: 65px;
+    top: 5px;
     right: 5px;
     font-size: 22px;
     cursor: pointer;
-    color: white; /* ne mora biti white jer je na svijetloj pozadini */
+    color: white;
     z-index: 10;
   }
 
@@ -636,17 +818,26 @@ footer a {
 
   .container2 {
     flex-direction: column;
-    padding: 15px;
+    align-items: center;
+  }
+
+  .container2 h2 {
+    font-size: 26px;
   }
 
   .container2 input,
   .container2 button {
-    width: 100%;
+    font-size: 14px;
+    width: 90%;
+    margin-left: 17px;
+  }
+
+  aside {
+    justify-content: center;
   }
 }
 
-/* Za vrlo male ekrane (do 480px) */
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   #zaglavlje h1 {
     max-width: 80%;
   }
@@ -660,7 +851,14 @@ footer a {
     margin-bottom: 0;
   }
 
-  #logo {
+  .nav button {
+    width: 80px;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 0.4rem;
+  }
+
+  .logo {
     display: none;
   }
 
@@ -713,134 +911,146 @@ footer a {
     font-size: 14px;
     width: 50%;
   }
+
+  .close {
+    position: absolute;
+    top: 5px;
+  }
+
+  .container2 button {
+    width: 40%;
+  }
+
+  aside label {
+    font-size: 16px;
+  }
+
+  .upit {
+    padding: 6px;
+  }
 }
 
-/*komentari*/
-.komentar-sekcija {
-  max-width: 700px;
-  margin-top: 30px;
-  background-color: #888686;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 5px 8px rgb(0, 0, 0);
-  font-family: Segoe Print, sans-serif;
+@media (max-width: 371px) {
+  .nav button {
+    width: 70px;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 0.3rem;
+  }
+
+  .subnav {
+    min-width: 50px;
+  }
+
+  .close {
+    position: absolute;
+    top: 5px;
+  }
+
+  .container2 button {
+    width: 40%;
+  }
+
+  aside label {
+    font-size: 14px;
+  }
+
+  .upit {
+    padding: 6px;
+  }
+
+  .datetime {
+    font-size: 12px;
+  }
 }
 
-.komentar-forma {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 80%;
-  justify-self: center;
+@media (max-width: 410px) {
+  #pitaj input {
+    width: 250px;
+  }
+
+  #pitaj h1 {
+    font-size: 30px;
+  }
+
+  #pitaj p {
+    font-size: 20px;
+  }
+
+  #pitaj button {
+    font-size: 14px;
+  }
+
+  #pitaj a {
+    font-size: 15px;
+  }
 }
 
-.comm {
-  border-radius: 4px;
-  box-shadow: 0 2px 4px white;
-  cursor: pointer;
-  font-family: Segoe print;
-}
+/* karta centrirana na sredinu ekrana */
 
-/* Prozor za komentare */
-.komentar-okvir {
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f1f0ea;
-  padding: 5px;
-  height: 500px;
-  overflow-y: auto; /* scroll ako ima puno komentara */
-  box-shadow: 0 2px 5px rgba(255, 255, 253, 0.5);
-  font-size: 13px;
-}
-
-.komentar-lista strong {
-  color: #292828;
+.karta-dropdown.open .subnav {
   display: block;
+  position: fixed;
+  top: 35%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: min(90vw, 400px);
+  z-index: 20000;
 }
 
-.komentar-lista span {
-  color: gray;
-  font-size: 0.85em;
+.karta-dropdown.open::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 15000;
+}
+
+/*forma centrirana na sredinu ekrana*/
+.forma-dropdown.open .subnav {
   display: block;
-  margin-bottom: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 400px);
+  padding: 0;
+  z-index: 20000;
+  padding-top: 32px;
 }
 
-/*pitaj*/
-.upit {
-  padding: 10px;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(254, 249, 249, o.5);
-  margin-bottom: 40px;
+/* tamna pozadina iza modala */
+.forma-dropdown.open::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 15000;
 }
 
-.upit a {
-  text-decoration: none;
-  color: #444444;
-  font-family: Segoe print;
+/* kutija forme u modalu */
+.forma-dropdown .container2 {
+  margin-top: 0; /* <-- makni ono što gura dolje */
+  width: 100%;
+  max-width: 400px;
+  padding: 18px;
 }
 
-.upit:hover {
-  background-color: aliceblue;
+/* inputi i buttoni u modalu bez onih margin-left iz media query */
+.forma-dropdown .container2 input,
+.forma-dropdown .container2 button {
+  width: 100%;
+  margin-left: 0 !important;
 }
 
-#pitaj {
-  background-color: #b6b0b0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#pitaj h1 {
-  color: #444;
-  margin-top: 20px;
-  text-align: center;
-  font-size: 50px;
-  font-family: Lucida caligraphy;
-  text-shadow: 0 2px 4px white;
-}
-
-#pitaj p {
-  color: #292828;
+/* NAJBITNIJE: pregazi globalni h2 stil samo u modalu */
+.forma-dropdown h2,
+.forma-dropdown #dobrodosli {
   font-size: 22px;
-  margin: 0;
-  text-decoration: wavy;
-  text-align: center;
-}
-
-#pitaj form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  gap: 15px;
-  align-items: center;
-}
-
-#pitaj input {
-  margin-top: 0;
-  width: 400px;
-}
-
-#pitaj button {
-  width: fit-content;
-  align-content: center;
-  border-radius: 7px;
-  font-family: Segoe print;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-#pitaj a {
-  text-decoration: none;
-  font-size: 18px;
-  font-family: Segoe print;
-  box-shadow: 0 3px 6px #292828;
+  margin: 0 0 12px 0;
+  padding: 10px;
+  background-color: rgb(227, 225, 222);
+  box-shadow: 0 2px 4px black;
   border-radius: 8px;
-  background-color: rgb(203, 203, 203);
-  padding: 5px;
-  color: #292828;
-}
-
-#pitaj textarea {
-  box-shadow: 0 3px 6px rgba(23, 23, 23, 0.5);
 }

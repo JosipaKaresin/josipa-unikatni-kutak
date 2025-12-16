@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/galerija.css" />
     <title>Oslikavanje stakla</title>
-    <link rel="icon" type="image/favicon" href="projekt-slike/logo.ps.jpg" />
+    <link rel="icon" type="image/favicon" href="projekt-slike/logo.jpg" />
   </head>
   <body>
     <button id="cart-toggle">
@@ -622,7 +622,7 @@
             data-price_0_02="35"
             data-price_0_03="40"
             data-price_0_3="45"
-            data-visine="0.02,0.03,0.3"
+            data-visine="0.02l,0.03l,0.3l"
             data-boje="bijela,srebrna,crna,zlatna,šljiva,kruška,cvijetovi"
             data-dodaci="bez,špaga,metal,tacna,šljokice,pozlata"
           >
@@ -632,7 +632,7 @@
             />
             <h4>Set za piće</h4>
 
-            <p>Boju, visinu i dodatke setova birate sami...</p>
+            <p>Boju, visinu i dodatke birate sami...</p>
 
             <button class="button">Odaberite</button>
           </div>
@@ -675,7 +675,7 @@
           <p id="modal-price">Cijena: 0 €</p>
           <label>Količina:</label>
           <div class="qty-box">
-            <button class="qty-btn" id="qty-minus">−</button>
+            <button class="qty-btn" id="qty-minus">-</button>
             <span id="qty-number">1</span>
             <button class="qty-btn" id="qty-plus">+</button>
           </div>
@@ -684,6 +684,7 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="js/cart.js"></script>

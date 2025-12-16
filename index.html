@@ -14,7 +14,24 @@
       content="unikatni pokloni, oslikavanje stakla, boce za rakiju,dekoracije za krstitke i vjenčanja, memory plišanci, gnomovi, personalizirani pokloni, pokloni po narudžbi, ručni rad, suveniri, dekoracije"
     />
     <meta name="author" content="Unikatni kutak JK" />
-    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://JosipaKaresin.github.io/josipa-unikatni-kutak/"
+    />
+    <meta
+      property="og:title"
+      content="Unikatni kutak JK - Ručno rađeni pokloni"
+    />
+    <meta
+      property="og:description"
+      content="Ručno rađeni gnomovi, snjegovići, dekoracije i personalizirani pokloni po želji."
+    />
+    <meta
+      property="og:image"
+      content="https://JosipaKaresin.github.io/josipa-unikatni-kutak/projekt-slike/og-logo.jpg"
+    />
+
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -25,7 +42,7 @@
       id="logo"
       rel="icon"
       type="image/favicon"
-      href="projekt-slike/logo.ps.jpg"
+      href="projekt-slike/logo.jpg"
     />
     <link
       rel="stylesheet"
@@ -39,8 +56,8 @@
     <main>
       <nav>
         <img
-          id="logo"
-          src="projekt-slike/logo.ps.jpg"
+          class="logo"
+          src="projekt-slike/logo.jpg"
           alt="logo"
           width="160px"
           height="100px"
@@ -65,13 +82,23 @@
               <li>
                 <a href="gnom.html">Gnomovi</a>
               </li>
+              <li>
+                <a
+                  class="admin"
+                  href="admin.html"
+                  id="admin-link"
+                  style="display: none"
+                >
+                  Admin
+                </a>
+              </li>
               <span class="close" onclick="closeDropdown(this)">&times;</span>
             </ul>
           </li>
           <li class="dropdown">
             <button onclick="toggleDropdown(event)">Kontakt</button>
             <ul class="subnav">
-              <li><a href="+385955045042">Telefon</a></li>
+              <li><a href="tel:+385955045042">Telefon</a></li>
               <li>
                 <a href="mailto:unikatni.kutak.jk@gmail.com">Email</a>
               </li>
@@ -86,11 +113,11 @@
               <span class="close" onclick="closeDropdown(this)">&times;</span>
             </ul>
           </li>
-          <li class="dropdown">
+          <li class="dropdown forma-dropdown">
             <button onclick="toggleDropdown(event)">Prijava/odjava</button>
             <ul class="subnav">
               <li>
-                <div class="container2">
+                <form class="container2">
                   <div id="auth">
                     <h2>Prijava/registracija</h2>
                     <input id="email" type="email" placeholder="Email" />
@@ -99,28 +126,29 @@
                       type="password"
                       placeholder="Lozinka"
                     />
-                    <button id="btnLogin">Prijavi se</button>
-                    <button id="btnRegister">Registriraj se</button>
-                  </div>
-                  <div id="app">
-                    <h2 id="dobrodosli">Dobrodošli!</h2>
-                    <button id="btnLogout">Odjavi se</button>
-                    <hr />
-                    <h3>Stavke</h3>
                     <input
-                      id="itemInput"
-                      type="text"
-                      placeholder="Unesite stavku"
+                      id="passwordConfirm"
+                      type="password"
+                      placeholder="Potvrdi lozinku"
                     />
-                    <button id="btnAdd">Dodaj</button>
-                    <ul id="dataList"></ul>
+                    <button id="btnLogin" type="button">Prijavi se</button>
+                    <button id="btnRegister" type="button">
+                      Registriraj se
+                    </button>
                   </div>
-                </div>
+
+                  <div id="app">
+                    <div id="userPanel">
+                      <h2 id="dobrodosli">Dobrodošli!</h2>
+                      <button id="btnLogout" type="button">Odjavi se</button>
+                    </div>
+                  </div>
+                </form>
               </li>
               <span class="close" onclick="closeDropdown(this)">&times;</span>
             </ul>
           </li>
-          <li class="dropdown">
+          <li class="dropdown karta-dropdown">
             <button onclick="toggleDropdown(event)">Karta</button>
             <ul class="subnav">
               <li><div id="map"></div></li>
@@ -303,7 +331,7 @@
     <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database-compat.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore-compat.js"></script>
 
     <script src="js/script.js"></script>
   </body>

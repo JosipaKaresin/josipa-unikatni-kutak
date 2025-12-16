@@ -1,4 +1,6 @@
+//-----------------------------------------------
 //Dropdown i karta
+//-----------------------------------------------
 let map = null;
 function toggleDropdown(event) {
   event.preventDefault();
@@ -23,7 +25,7 @@ function toggleDropdown(event) {
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/">OtvoriStreetMap</a>',
         }).addTo(map);
-
+        //karta s popup adresom
         L.marker([45.17827, 18.02746])
           .addTo(map)
           .bindPopup(
@@ -37,22 +39,17 @@ function toggleDropdown(event) {
     }, 300);
   }
 }
-
+//close(x)
 function closeDropdown(closeBtn) {
   const subnav = closeBtn.closest(".dropdown");
   subnav.classList.remove("open");
 }
 
-// window.onclick = function (event) {
-//   if (event.target == popup) {
-//     popup.style.display = "none";
-//   }
-// };
-
-//datum i vrijeme
+//-----------------------------------------------
+//DATUM I VRIJEME
+//-----------------------------------------------
 function updateDateTime() {
   const vrijeme = new Date();
-
   const dan = vrijeme.getDate();
   const mjesec = vrijeme.getMonth() + 1; // mjeseci počinju od 0
   const godina = vrijeme.getFullYear();
@@ -69,8 +66,9 @@ updateDateTime();
 
 setInterval(updateDateTime, 1000);
 
+//-----------------------------------------------
 //prijava i registracija
-
+//-----------------------------------------------
 const firebaseConfig = {
   apiKey: "AIzaSyA2aRuGIW3jQjCqnd6hcWAk8TXsS7wmJm4",
   authDomain: "unikatni-kutak-jk-394e6.firebaseapp.com",
@@ -83,19 +81,22 @@ const firebaseConfig = {
   measurementId: "G-4BWKK0EN4W",
 };
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth(); //FIREBASE AUTENTIFIKACIJA
-const db = firebase.database(); //FIREBASE REALTIME DATABASE
+//inicijalizacija- zbog više inicijalizacija da se ne preklapaju
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+//spaja stranicu na firebase
+const auth = firebase.auth();
+const db = firebase.database();
 
 const authSection = document.getElementById("auth");
 const appSection = document.getElementById("app");
-const stavkeList = document.getElementById("dataList");
 const dobrodosli = document.getElementById("dobrodosli");
-const itemInput = document.getElementById("itemInput");
-const listRef = db.ref("stavke");
 
 let currentUser;
 
+//helper funkcije
 function emailInput() {
   return document.getElementById("email").value.trim();
 }
@@ -104,10 +105,39 @@ function passwordInput() {
   return document.getElementById("password").value.trim();
 }
 
+function passwordConfirmInput() {
+  return document.getElementById("passwordConfirm").value.trim();
+}
+
 document.getElementById("btnRegister").addEventListener("click", async () => {
+  const passwordConfirmField = document.getElementById("passwordConfirm");
+
+  if (getComputedStyle(passwordConfirmField).display === "none") {
+    passwordConfirmField.style.display = "block";
+    passwordConfirmField.focus();
+    return;
+  }
+
   const email = emailInput();
   const password = passwordInput();
+  const passwordConfirm = passwordConfirmInput();
 
+  if (!email || !password || !passwordConfirm) {
+    alert("Molimo popunite sva polja");
+    return;
+  }
+
+  if (password !== passwordConfirm) {
+    alert("Lozinke se ne podudaraju");
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("Lozinka mora imati najmanje 6 znakova");
+    return;
+  }
+
+  //firebase napravi račun
   try {
     const userCredential = await auth.createUserWithEmailAndPassword(
       email,
@@ -117,15 +147,18 @@ document.getElementById("btnRegister").addEventListener("click", async () => {
     const uid = userCredential.user.uid;
     currentUser = userCredential.user;
 
-    //DODAVANJE KORISNIKA U REALTIME DATABASE PREKO UID-A AUTENTHICATION DIJELA
+    //DODAVANJE KORISNIKA U REALTIME DATABASE
     await db.ref(`Korisnik/${uid}`).set({
       Email: email,
       Id: uid,
       UserName: email.split("@")[0],
     });
 
-    dobrodosli.innerHTML = `Dobrodosli ${currentUser.email}`;
+    dobrodosli.textContent = `Dobrodosli ${currentUser.email}`;
     alert("Registracija uspješna");
+
+    passwordConfirmField.style.display = "none";
+    passwordConfirmField.value = "";
   } catch (err) {
     alert(err.message);
   }
@@ -151,65 +184,54 @@ document.getElementById("btnLogout").addEventListener("click", () => {
   auth.signOut();
 });
 
-//PRAĆENJE STATUSA PRIJAVA
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    authSection.style.display = "none";
-    appSection.style.display = "block";
-    loadData();
-  } else {
-    authSection.style.display = "block";
-    appSection.style.display = "none";
+//admin provjera
+
+const adminLink = document.getElementById("admin-link");
+const userPanel = document.getElementById("userPanel");
+
+auth.onAuthStateChanged(async (user) => {
+  // default: sve sakrij
+  if (userPanel) userPanel.style.display = "none";
+  if (adminLink) adminLink.style.display = "none";
+  if (appSection) appSection.style.display = "none";
+  if (authSection) authSection.style.display = "block"; // login forma
+
+  //reset forme
+  if (!user) {
+    const emailEl = document.getElementById("email");
+    const passEl = document.getElementById("password");
+
+    if (emailEl) emailEl.value = "";
+    if (passEl) passEl.value = "";
+    if (dobrodosli) dobrodosli.textContent = "Dobrodošli!";
+
+    return;
+  }
+
+  // prijavljen -> sakrij login formu, pokaži app + user panel
+  if (authSection) authSection.style.display = "none";
+  if (appSection) appSection.style.display = "block";
+  if (userPanel) userPanel.style.display = "block";
+
+  if (dobrodosli) dobrodosli.textContent = `Dobrodošli ${user.email}`;
+
+  try {
+    const doc = await firebase
+      .firestore()
+      .collection("admins")
+      .doc(user.uid)
+      .get();
+    const isAdmin = doc.exists && doc.data()?.role === "admin";
+
+    if (isAdmin && adminLink) adminLink.style.display = "inline-block";
+  } catch (e) {
+    console.error("Admin provjera greška:", e);
   }
 });
 
-/* dodavanje*/
-document.getElementById("btnAdd").addEventListener("click", () => {
-  const text = itemInput.value.trim();
-  if (text == "") {
-    alert("Niste unijeli stavku za unos");
-  }
-
-  const newRef = listRef.push();
-  newRef.set({ naziv: text });
-  itemInput.value = "";
-});
-
-//Ispis stavki
-function loadData() {
-  listRef.on("value", (snapshot) => {
-    const data = snapshot.val();
-    stavkeList.innerHTML = "";
-
-    for (let id in data) {
-      const li = document.createElement("li");
-      li.textContent = data[id].naziv;
-
-      //ažuriranje stavki
-      const btnEdit = document.createElement("button");
-      btnEdit.textContent = "Uredi";
-      btnEdit.onclick = () => {
-        const noviNaziv = prompt("Novi naziv", data[id].naziv);
-        if (noviNaziv) {
-          db.ref(`stavke/${id}`).update({ naziv: noviNaziv });
-        }
-      };
-
-      //brisanje
-      const btnDelete = document.createElement("button");
-      btnDelete.textContent = "Obriši";
-      btnDelete.onclick = () => {
-        db.ref(`stavke/${id}`).remove();
-      };
-
-      li.appendChild(btnEdit);
-      li.appendChild(btnDelete);
-      stavkeList.appendChild(li);
-    }
-  });
-}
-
-//komentari
+//-----------------------------------------------
+//KOMENTARI
+//-----------------------------------------------
 const komentarForm = document.getElementById("komentarForm");
 const komentarInput = document.getElementById("komentarInput");
 const komentarLista = document.getElementById("komentarLista");
@@ -218,31 +240,29 @@ komentarForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const tekst = komentarInput.value.trim();
   if (tekst === "") return;
-  console.log("komentar poslan", tekst);
 
   const user = firebase.auth().currentUser;
   const userName = user ? user.email : "Anonimni korisnik";
 
-  const newKomentarRef = firebase.database().ref("komentari").push();
+  //spremanje komentara u firebase db
+  const newKomentarRef = db.ref("komentari").push();
   newKomentarRef.set({
     tekst: tekst,
     korisnik: userName,
     datum: new Date().toLocaleString(),
   });
 
+  //reset inputa
   komentarInput.value = "";
 });
 
-firebase
-  .database()
-  .ref("komentari")
-  .on("value", (snapshot) => {
-    komentarLista.innerHTML = "";
-    snapshot.forEach((childSnapshot) => {
-      const data = childSnapshot.val();
-      const li = document.createElement("li");
-      li.innerHTML = `<strong>${data.korisnik}</strong>
+db.ref("komentari").on("value", (snapshot) => {
+  komentarLista.innerHTML = ""; //brisanje stare liste da se ne dodaju duplikati
+  snapshot.forEach((childSnapshot) => {
+    const data = childSnapshot.val();
+    const li = document.createElement("li");
+    li.innerHTML = `<strong>${data.korisnik}</strong>
     <span style= "color: gray; font-size:0.8em">(${data.datum})</span>${data.tekst}<br/><hr/>`;
-      komentarLista.appendChild(li);
-    });
+    komentarLista.appendChild(li);
   });
+});

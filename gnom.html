@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/galerija.css" />
     <title>Gnomovi i snjegovići</title>
-    <link rel="icon" type="image/favicon" href="projekt-slike/logo.ps.jpg" />
+    <link rel="icon" type="image/favicon" href="projekt-slike/logo.jpg" />
   </head>
   <body>
     <button id="cart-toggle">
@@ -25,7 +25,7 @@
 
       <button id="checkout-btn">Naruči</button>
 
-      <!-- Checkout panel (skriven dok ne kliknemo Naruči) -->
+      <!-- Checkout panel (skriven dok ne kliknem Naruči) -->
       <div id="checkout-panel" class="checkout-panel">
         <h3>Podaci za narudžbu</h3>
 
@@ -81,7 +81,7 @@
 
     <h2>Gnomovi i snjegovići</h2>
 
-    <main class="g2">
+    <main class="g2 gnom">
       <div>
         <h3>Galerija slika</h3>
         <div class="galerija3 layout-desno">
@@ -261,7 +261,7 @@
               alt="Zeleni gnomovi"
             />
             <h4>Gnom</h4>
-            <p>Boju, visinu i dodatke svojih gnomova birate sami...</p>
+            <p>Boju, visinu i dodatke gnomova birate sami...</p>
             <button class="button">Odaberite</button>
           </div>
           <div
@@ -281,7 +281,7 @@
             />
             <h4>Snjegović</h4>
 
-            <p>Boju, visinu i dodatke svojih gnomova birate sami...</p>
+            <p>Boju, visinu i dodatke gnomova birate sami...</p>
             <button class="button">Odaberite</button>
           </div>
           <div
@@ -301,7 +301,7 @@
             />
             <h4>Gnom set</h4>
 
-            <p>Boju, visinu i dodatke svojih gnomova birate sami...</p>
+            <p>Boju, visinu i dodatke gnomova birate sami...</p>
 
             <button class="button">Odaberite</button>
           </div>
@@ -312,7 +312,7 @@
     <footer class="dalje">
       <a href="index.html">Početna</a>
       <a href="memo.html">Memory</a>
-      <a href="art.html">Oslikavanje stakla</a>
+      <a href="art.html">Staklo</a>
       <a href="print.html">Print</a>
       <a href="naljepnice.html">Naljepnice</a>
     </footer>
@@ -353,8 +353,11 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
     <script src="js/cart.js"></script>
     <script src="js/galerija.js"></script>
   </body>

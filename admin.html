@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <title>Admin-Unikatni kutak JK</title>
+    <link rel="icon" type="image/favicon" href="projekt-slike/logo.jpg" />
+  </head>
+  <body>
+    <header><h1>Admin panel</h1></header>
+    <nav>
+      <p id="status">Provjera</p>
+      <a class="pocetna" href="index.html">Početna</a>
+      <button id="logoutBtn">Odjava</button>
+    </nav>
+
+    <hr />
+    <main>
+      <div id="adminContent">
+        <div class="cont">
+          <h2>Korisnici</h2>
+          <ul id="userList"></ul>
+        </div>
+
+        <div class="cont">
+          <h2>Narudžbe</h2>
+          <ul id="orderList"></ul>
+        </div>
+
+        <div class="cont">
+          <h2>Komentari</h2>
+          <ul id="commentList"></ul>
+        </div>
+      </div>
+    </main>
+    <footer><p>&copy; Unikatni kutak JK 2025. Sva prava pridržana</p></footer>
+
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore-compat.js"></script>
+
+    <script src="js/admin.js"></script>
+  </body>
+</html>

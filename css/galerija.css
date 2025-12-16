@@ -6,7 +6,7 @@ body {
   background-color: rgb(237, 236, 236);
 }
 
-footer a {
+.dalje a {
   text-decoration: none;
   margin-left: 20px;
   box-shadow: 0 2px 4px black;
@@ -16,6 +16,8 @@ footer a {
   font-family: Segoe print;
   border-radius: 5px;
   color: #343333;
+  text-align: center;
+  width: 100px;
 }
 
 footer {
@@ -26,7 +28,7 @@ footer {
   margin-top: 50px;
 }
 
-footer a:hover {
+.dalje a:hover {
   background-color: rgb(219, 236, 251);
 }
 
@@ -96,7 +98,8 @@ h3 {
   margin-left: 4px;
 }
 
-.next:hover {
+.next:hover,
+.prev:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -111,6 +114,10 @@ h3 {
 /* transparentnost malih sličica */
 .demo {
   opacity: 0.6;
+}
+
+.demo:hover {
+  transform: scale(1.05);
 }
 
 .active,
@@ -139,7 +146,7 @@ h3 {
 
 .layout-desno .column {
   width: 100%;
-  margin: 5px 0;
+  margin: 0;
 }
 
 .layout-desno .column img {
@@ -188,7 +195,7 @@ aside p {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 .g3 .layout-desno .column img {
@@ -200,6 +207,17 @@ aside p {
 
 .g3 .mySlides {
   margin-top: 3px;
+}
+
+.memory .row {
+  width: 90px;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.memory .layout-desno .column img {
+  width: 100%;
+  height: 90px;
 }
 
 /*kartice za narudžbu*/
@@ -223,7 +241,7 @@ aside {
   text-align: center;
   font-family: Lucida caligraphy;
   padding: 2px;
-  height: 330px;
+  height: auto;
   border-radius: 5px;
 }
 
@@ -239,9 +257,10 @@ aside {
 }
 
 .card p {
-  font-family: Lucida caligraphy;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   margin: 10px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 p {
@@ -272,7 +291,7 @@ h4 {
   cursor: pointer;
   width: 100%;
   font-size: 14px;
-  font-family: Lucida caligraphy;
+  font-family: Segoe print;
 }
 
 .card button:hover {
@@ -571,6 +590,15 @@ label {
   text-align: center;
 }
 
+@font-face {
+  font-family: Segoe print;
+  src: url("../fontovi/segoepr.woff");
+}
+@font-face {
+  font-family: Lucida caligraphy;
+  src: url("../fontovi/LCALLIG.woff");
+}
+
 /*Responzivnost*/
 
 @media (max-width: 1125px) {
@@ -614,16 +642,52 @@ label {
   }
 
   .next {
-    left: 450px;
+    right: 215px;
+  }
+
+  .prev {
+    left: 10px;
   }
 
   h2 {
     margin-left: 5px;
     margin-right: 5px;
   }
+
+  .memory .row {
+    width: 100px;
+    margin-left: 30px;
+    margin-top: 25px;
+  }
+
+  .memory .layout-desno .column img {
+    width: 100%;
+    height: 100px;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 812px) {
+  #cart-sidebar {
+    right: -100% !important; /* uvijek skriven */
+  }
+
+  #cart-sidebar.open {
+    right: 0 !important; /* pokaže se samo kad klikneš gumb */
+  }
+
+  #cart-toggle {
+    top: 25px;
+    right: 10px;
+    font-size: 16px;
+    padding: 4px 10px;
+  }
+
+  .card {
+    height: auto;
+  }
+}
+
+@media (max-width: 723px) {
   body {
     margin: 0;
   }
@@ -660,7 +724,10 @@ label {
     padding: 2px;
   }
 
-  /* strelice malo bliže rubu na mobitelu */
+  .memory .row {
+    margin: 0;
+  }
+
   .prev,
   .next {
     top: 45%;
@@ -677,9 +744,14 @@ label {
 
   .card {
     max-width: 130px;
+    height: auto;
   }
 
-  footer a {
+  .card p {
+    font-size: 13px;
+  }
+
+  .dalje a {
     font-size: 14px;
     margin: 4px;
     padding: 4px 6px;
@@ -699,19 +771,103 @@ label {
   }
 }
 
-@media (max-width: 768px) {
-  #cart-sidebar {
-    right: -100% !important; /* uvijek skriven */
+@media (max-width: 623px) {
+  #cart-toggle {
+    right: 10px;
+    top: 9px;
+    font-size: 10px;
+    padding: 1px 8px;
   }
 
-  #cart-sidebar.open {
-    right: 0 !important; /* pokaže se samo kad klikneš gumb */
+  .card {
+    width: 98px;
+    height: auto;
+    margin: 5px;
+  }
+
+  .card p {
+    font-size: 10px;
+  }
+
+  .card img {
+    max-width: 85px;
+  }
+
+  .card button {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .card h4 {
+    font-size: 14px;
+  }
+
+  .dalje a {
+    font-size: 12px;
+    width: 70px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 371px) {
+  .card {
+    width: 98px;
+    margin: 5px;
+    height: auto;
+  }
+
+  .card img {
+    max-width: 85px;
+  }
+
+  .card p {
+    font-size: 12px;
+  }
+
+  .card button {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .card h4 {
+    font-size: 14px;
+  }
+
+  .card p {
+    font-size: 10px;
+  }
+
+  .dalje a {
+    font-size: 10px;
+    width: 60px;
+    font-weight: 600;
   }
 
   #cart-toggle {
-    top: 25px;
     right: 10px;
-    font-size: 16px;
-    padding: 4px 10px;
+    top: 80px;
+    font-size: 10px;
+    padding: 1px 8px;
+  }
+
+  .mySlides img {
+    height: 400px;
+  }
+
+  .prev,
+  .next {
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    padding: 12px;
+  }
+
+  .prev {
+    left: 8px;
+    margin-left: 0;
+  }
+
+  .next {
+    right: 8px;
   }
 }
