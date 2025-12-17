@@ -53,111 +53,175 @@
     <header id="zaglavlje">
       <h1 class="glow">Unikatni kutak JK</h1>
     </header>
+    <nav>
+      <img
+        class="logo"
+        src="projekt-slike/logo.jpg"
+        alt="logo"
+        width="160px"
+        height="100px"
+      />
+
+      <ul class="nav">
+        <li class="dropdown">
+          <button onclick="toggleDropdown(event)">Meni</button>
+          <ul class="subnav">
+            <li>
+              <a href="art.html">Oslikavanje stakla</a>
+            </li>
+            <li>
+              <a href="memo.html">Memory plišanci</a>
+            </li>
+            <li>
+              <a href="naljepnice.html">Naljepnice</a>
+            </li>
+            <li>
+              <a href="print.html">Print</a>
+            </li>
+            <li>
+              <a href="gnom.html">Gnomovi</a>
+            </li>
+            <li>
+              <a
+                class="admin"
+                href="admin.html"
+                id="admin-link"
+                style="display: none"
+              >
+                Admin
+              </a>
+            </li>
+            <span class="close" onclick="closeDropdown(this)">&times;</span>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <button onclick="toggleDropdown(event)">Kontakt</button>
+          <ul class="subnav">
+            <li><a href="tel:+385955045042">Telefon</a></li>
+            <li>
+              <a href="mailto:unikatni.kutak.jk@gmail.com">Email</a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/?locale=hr_HR">Facebook</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/unikatni_kutak_jk/"
+                >Instagram</a
+              >
+            </li>
+            <span class="close" onclick="closeDropdown(this)">&times;</span>
+          </ul>
+        </li>
+        <li class="dropdown forma-dropdown">
+          <button onclick="toggleDropdown(event)">Prijava/odjava</button>
+          <ul class="subnav">
+            <li>
+              <form class="container2">
+                <div id="auth">
+                  <h2>Prijava/registracija</h2>
+                  <input id="email" type="email" placeholder="Email" />
+                  <input id="password" type="password" placeholder="Lozinka" />
+                  <input
+                    id="passwordConfirm"
+                    type="password"
+                    placeholder="Potvrdi lozinku"
+                  />
+                  <button id="btnLogin" type="button">Prijavi se</button>
+                  <button id="btnRegister" type="button">Registriraj se</button>
+                </div>
+
+                <div id="app">
+                  <div id="userPanel">
+                    <h2 id="dobrodosli">Dobrodošli!</h2>
+                    <button id="btnLogout" type="button">Odjavi se</button>
+                  </div>
+                </div>
+              </form>
+            </li>
+            <span class="close" onclick="closeDropdown(this)">&times;</span>
+          </ul>
+        </li>
+        <li class="dropdown karta-dropdown">
+          <button onclick="toggleDropdown(event)">Karta</button>
+          <ul class="subnav">
+            <li><div id="map"></div></li>
+            <span class="close" onclick="closeDropdown(this)">&times;</span>
+          </ul>
+        </li>
+        <li>
+          <button id="cart-toggle">🛒(<span id="cart-count">0</span>)</button>
+        </li>
+      </ul>
+
+      <p id="datetime"></p>
+      <div id="cart-sidebar">
+        <button id="cart-close" class="cart-close">x</button>
+        <h3>Vaša košarica</h3>
+
+        <ul id="cart-items"></ul>
+
+        <p>
+          <strong>Ukupno artikala: </strong><span id="cart-items-total">0</span>
+        </p>
+        <p><strong>Ukupna cijena: </strong><span id="cart-total">0 €</span></p>
+
+        <button id="checkout-btn">Naruči</button>
+
+        <!-- Checkout panel (skriven dok ne kliknemo Naruči) -->
+        <div id="checkout-panel" class="checkout-panel">
+          <h3>Podaci za narudžbu</h3>
+
+          <label
+            >Ime i prezime:
+            <input type="text" id="cust-name" required />
+          </label>
+
+          <label
+            >Email:
+            <input type="email" id="cust-email" required />
+          </label>
+
+          <label
+            >Telefon:
+            <input type="tel" id="cust-phone" required />
+          </label>
+
+          <label
+            >Adresa:
+            <input type="text" id="cust-address" required />
+          </label>
+
+          <label
+            >Grad:
+            <input type="text" id="cust-city" required />
+          </label>
+
+          <label
+            >Dostava:
+            <select id="cust-delivery">
+              <option value="GLS">GLS</option>
+              <option value="HP Express">HP Express</option>
+              <option value="Osobno preuzimanje">Osobno preuzimanje</option>
+            </select>
+          </label>
+
+          <label
+            >Plaćanje:
+            <select id="cust-payment">
+              <option value="Pouzeće">Pouzeće</option>
+              <option value="Gotovina pri preuzimanju">
+                Gotovina pri preuzimanju
+              </option>
+              <option value="Uplata na račun">Uplata na račun</option>
+            </select>
+          </label>
+
+          <button id="submit-order">Pošalji narudžbu</button>
+          <p id="order-message" class="order-message"></p>
+        </div>
+      </div>
+    </nav>
     <main>
-      <nav>
-        <img
-          class="logo"
-          src="projekt-slike/logo.jpg"
-          alt="logo"
-          width="160px"
-          height="100px"
-        />
-
-        <ul class="nav">
-          <li class="dropdown">
-            <button onclick="toggleDropdown(event)">Meni</button>
-            <ul class="subnav">
-              <li>
-                <a href="art.html">Oslikavanje stakla</a>
-              </li>
-              <li>
-                <a href="memo.html">Memory plišanci</a>
-              </li>
-              <li>
-                <a href="naljepnice.html">Naljepnice</a>
-              </li>
-              <li>
-                <a href="print.html">Print</a>
-              </li>
-              <li>
-                <a href="gnom.html">Gnomovi</a>
-              </li>
-              <li>
-                <a
-                  class="admin"
-                  href="admin.html"
-                  id="admin-link"
-                  style="display: none"
-                >
-                  Admin
-                </a>
-              </li>
-              <span class="close" onclick="closeDropdown(this)">&times;</span>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <button onclick="toggleDropdown(event)">Kontakt</button>
-            <ul class="subnav">
-              <li><a href="tel:+385955045042">Telefon</a></li>
-              <li>
-                <a href="mailto:unikatni.kutak.jk@gmail.com">Email</a>
-              </li>
-              <li>
-                <a href="https://www.facebook.com/?locale=hr_HR">Facebook</a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/unikatni_kutak_jk/"
-                  >Instagram</a
-                >
-              </li>
-              <span class="close" onclick="closeDropdown(this)">&times;</span>
-            </ul>
-          </li>
-          <li class="dropdown forma-dropdown">
-            <button onclick="toggleDropdown(event)">Prijava/odjava</button>
-            <ul class="subnav">
-              <li>
-                <form class="container2">
-                  <div id="auth">
-                    <h2>Prijava/registracija</h2>
-                    <input id="email" type="email" placeholder="Email" />
-                    <input
-                      id="password"
-                      type="password"
-                      placeholder="Lozinka"
-                    />
-                    <input
-                      id="passwordConfirm"
-                      type="password"
-                      placeholder="Potvrdi lozinku"
-                    />
-                    <button id="btnLogin" type="button">Prijavi se</button>
-                    <button id="btnRegister" type="button">
-                      Registriraj se
-                    </button>
-                  </div>
-
-                  <div id="app">
-                    <div id="userPanel">
-                      <h2 id="dobrodosli">Dobrodošli!</h2>
-                      <button id="btnLogout" type="button">Odjavi se</button>
-                    </div>
-                  </div>
-                </form>
-              </li>
-              <span class="close" onclick="closeDropdown(this)">&times;</span>
-            </ul>
-          </li>
-          <li class="dropdown karta-dropdown">
-            <button onclick="toggleDropdown(event)">Karta</button>
-            <ul class="subnav">
-              <li><div id="map"></div></li>
-              <span class="close" onclick="closeDropdown(this)">&times;</span>
-            </ul>
-          </li>
-        </ul>
-        <p id="datetime"></p>
-      </nav>
       <div class="flex-container">
         <div class="main-container">
           <div class="container">
@@ -328,11 +392,13 @@
       </div>
     </footer>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.3.0/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.3.0/firebase-auth-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.3.0/firebase-database-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.3.0/firebase-firestore-compat.min.js"></script>
 
-    <script src="js/script.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/cart.js" defer></script>
   </body>
 </html>

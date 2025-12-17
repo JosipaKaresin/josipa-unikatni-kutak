@@ -2,6 +2,7 @@
 //Dropdown i karta
 //-----------------------------------------------
 let map = null;
+//dropdown
 function toggleDropdown(event) {
   event.preventDefault();
 
@@ -14,6 +15,7 @@ function toggleDropdown(event) {
 
   clickedLi.classList.toggle("open");
 
+  //karta
   const mapContainer = clickedLi.querySelector("#map");
   if (mapContainer && clickedLi.classList.contains("open")) {
     setTimeout(() => {
@@ -48,47 +50,33 @@ function closeDropdown(closeBtn) {
 //-----------------------------------------------
 //DATUM I VRIJEME
 //-----------------------------------------------
-function updateDateTime() {
-  const vrijeme = new Date();
-  const dan = vrijeme.getDate();
-  const mjesec = vrijeme.getMonth() + 1; // mjeseci počinju od 0
-  const godina = vrijeme.getFullYear();
-  const sati = vrijeme.getHours().toString().padStart(2, "0");
-  const minute = vrijeme.getMinutes().toString().padStart(2, "0");
-  const sekunde = vrijeme.getSeconds().toString().padStart(2, "0");
+document.addEventListener("DOMContentLoaded", () => {
+  const datetime = document.getElementById("datetime");
+  if (!datetime) return;
+  function updateDateTime() {
+    const vrijeme = new Date();
+    const dan = vrijeme.getDate();
+    const mjesec = vrijeme.getMonth() + 1; // mjeseci počinju od 0
+    const godina = vrijeme.getFullYear();
+    const sati = vrijeme.getHours().toString().padStart(2, "0");
+    const minute = vrijeme.getMinutes().toString().padStart(2, "0");
+    const sekunde = vrijeme.getSeconds().toString().padStart(2, "0");
 
-  const noviFormat = `${sati}:${minute}:${sekunde}, ${dan}.${mjesec}.${godina}.`;
+    const noviFormat = `${sati}:${minute}:${sekunde}, ${dan}.${mjesec}.${godina}.`;
 
-  document.getElementById("datetime").textContent = noviFormat;
-}
+    datetime.textContent = noviFormat;
+  }
 
-updateDateTime();
+  updateDateTime();
 
-setInterval(updateDateTime, 1000);
-
+  setInterval(updateDateTime, 1000);
+});
 //-----------------------------------------------
 //prijava i registracija
 //-----------------------------------------------
-const firebaseConfig = {
-  apiKey: "AIzaSyA2aRuGIW3jQjCqnd6hcWAk8TXsS7wmJm4",
-  authDomain: "unikatni-kutak-jk-394e6.firebaseapp.com",
-  databaseURL:
-    "https://unikatni-kutak-jk-394e6-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "unikatni-kutak-jk-394e6",
-  storageBucket: "unikatni-kutak-jk-394e6.firebasestorage.app",
-  messagingSenderId: "642454571103",
-  appId: "1:642454571103:web:2b8937f1b2ebf394f473ea",
-  measurementId: "G-4BWKK0EN4W",
-};
-
-//inicijalizacija- zbog više inicijalizacija da se ne preklapaju
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
-
-//spaja stranicu na firebase
-const auth = firebase.auth();
-const db = firebase.database();
+const auth = window.auth;
+const rtdb = window.rtdb;
+const fs = window.fs;
 
 const authSection = document.getElementById("auth");
 const appSection = document.getElementById("app");
@@ -148,7 +136,7 @@ document.getElementById("btnRegister").addEventListener("click", async () => {
     currentUser = userCredential.user;
 
     //DODAVANJE KORISNIKA U REALTIME DATABASE
-    await db.ref(`Korisnik/${uid}`).set({
+    await rtdb.ref(`Korisnik/${uid}`).set({
       Email: email,
       Id: uid,
       UserName: email.split("@")[0],
@@ -216,11 +204,7 @@ auth.onAuthStateChanged(async (user) => {
   if (dobrodosli) dobrodosli.textContent = `Dobrodošli ${user.email}`;
 
   try {
-    const doc = await firebase
-      .firestore()
-      .collection("admins")
-      .doc(user.uid)
-      .get();
+    const doc = await fs.collection("admins").doc(user.uid).get();
     const isAdmin = doc.exists && doc.data()?.role === "admin";
 
     if (isAdmin && adminLink) adminLink.style.display = "inline-block";
@@ -236,33 +220,55 @@ const komentarForm = document.getElementById("komentarForm");
 const komentarInput = document.getElementById("komentarInput");
 const komentarLista = document.getElementById("komentarLista");
 
-komentarForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const tekst = komentarInput.value.trim();
-  if (tekst === "") return;
+if (komentarForm && komentarInput && komentarLista) {
+  komentarForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const tekst = komentarInput.value.trim();
+    if (tekst === "") return;
 
-  const user = firebase.auth().currentUser;
-  const userName = user ? user.email : "Anonimni korisnik";
+    const user = firebase.auth().currentUser;
+    const userName = user ? user.email : "Anonimni korisnik";
 
-  //spremanje komentara u firebase db
-  const newKomentarRef = db.ref("komentari").push();
-  newKomentarRef.set({
-    tekst: tekst,
-    korisnik: userName,
-    datum: new Date().toLocaleString(),
+    //spremanje komentara u firebase db
+    const newKomentarRef = rtdb.ref("komentari").push();
+    newKomentarRef.set({
+      tekst: tekst,
+      korisnik: userName,
+      datum: new Date().toLocaleString(),
+    });
+
+    //reset inputa
+    komentarInput.value = "";
   });
 
-  //reset inputa
-  komentarInput.value = "";
-});
-
-db.ref("komentari").on("value", (snapshot) => {
-  komentarLista.innerHTML = ""; //brisanje stare liste da se ne dodaju duplikati
-  snapshot.forEach((childSnapshot) => {
-    const data = childSnapshot.val();
-    const li = document.createElement("li");
-    li.innerHTML = `<strong>${data.korisnik}</strong>
+  rtdb.ref("komentari").on("value", (snapshot) => {
+    komentarLista.innerHTML = ""; //brisanje stare liste da se ne dodaju duplikati
+    snapshot.forEach((childSnapshot) => {
+      const data = childSnapshot.val();
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${data.korisnik}</strong>
     <span style= "color: gray; font-size:0.8em">(${data.datum})</span>${data.tekst}<br/><hr/>`;
-    komentarLista.appendChild(li);
+      komentarLista.appendChild(li);
+    });
   });
+}
+
+//----------------------------------
+//skrivanje loga i datuma pri skrolu
+//----------------------------------
+document.addEventListener("scroll", () => {
+  const logo = document.querySelector(".logo");
+  const datetime = document.getElementById("datetime");
+
+  if (!logo || !datetime) return;
+
+  if (window.scrollY > 500) {
+    logo.style.opacity = "0";
+
+    datetime.style.opacity = "0";
+  } else {
+    logo.style.opacity = "1";
+
+    datetime.style.opacity = "1";
+  }
 });

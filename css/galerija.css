@@ -275,12 +275,6 @@ h4 {
   color: #343333;
 }
 
-/* Naslov proizvoda u košarici */
-#cart-sidebar #cart-items li strong:first-child {
-  font-size: 18px;
-  color: #5f4c4c;
-}
-
 .card button {
   border-radius: 6px;
   margin-top: 10px;
@@ -317,6 +311,7 @@ h4 {
 }
 
 .modal-content {
+  position: relative;
   background: rgb(251, 243, 243);
   width: 500px;
   max-width: 90%;
@@ -344,6 +339,7 @@ h4 {
 .modal-left h3 {
   color: #393838;
   text-align: center;
+  font-size: 20px;
 }
 
 .modal-right {
@@ -361,12 +357,18 @@ select {
 }
 
 .close-modal {
-  font-size: 34px;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
   position: absolute;
-  right: 500px;
-  top: 160px;
-  color: white;
+  right: 12px;
+  top: 8px;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 10px;
+  color: black;
+  background-color: #ccc;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
   z-index: 10000;
 }
 
@@ -380,6 +382,7 @@ select {
   background-color: rgb(253, 247, 240);
   cursor: pointer;
   border-radius: 6px;
+  border: none;
   font-size: 16px;
   font-family: Segoe print;
   box-shadow: 0 2px 4px black;
@@ -390,13 +393,9 @@ select {
 }
 
 label {
-  font-size: 18px;
+  font-size: 16px;
   font-family: Lucida caligraphy;
   color: #322b2b;
-}
-
-.qty-btn {
-  cursor: pointer;
 }
 
 /* SIDEBAR KOŠARICA */
@@ -415,11 +414,17 @@ label {
   box-shadow: 0 2px 4px black;
 }
 
+/* Naslov proizvoda u košarici */
+#cart-sidebar #cart-items li strong:first-child {
+  font-size: 18px;
+  color: #5f4c4c;
+}
+
 #cart-sidebar {
   position: fixed;
   top: 0;
-  right: -360px; /* skriveno */
-  width: 340px;
+  right: -400px; /* skriveno */
+  width: 380px;
   max-width: 85%;
   height: 100%;
   background: #ffffff;
@@ -435,11 +440,45 @@ label {
   right: 0;
 }
 
-#cart-sidebar h3 {
-  text-align: center;
+.cart-raspored {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.cart-left strong {
+  display: block;
   font-family: Segoe print;
+  font-size: 16px;
   color: #484444;
-  margin-bottom: 10px;
+}
+
+.cart-img {
+  width: 90px;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px black;
+}
+
+.cart-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+  background-color: rgb(223, 218, 218);
+}
+
+.cart-right {
+  margin-top: 10px;
+  margin-right: 10px;
+  gap: 5px;
 }
 
 #cart-sidebar p {
@@ -457,20 +496,24 @@ label {
   margin: 0 0 10px 0;
 }
 
-.cart-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-  font-size: 13px;
+.qty-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  background: #f3f3f3;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
 }
 
-.cart-item-info {
-  flex: 1;
+.qty-btn:hover {
+  background: #ccc;
 }
 
-.cart-item-info small {
-  display: block;
+.qty-number {
+  text-align: center;
+  font-weight: 600;
 }
 
 .remove-item {
@@ -478,9 +521,9 @@ label {
   border: none;
   padding: 5px 10px;
   color: white;
-  margin-top: 5px;
+  margin-top: 10px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 10px;
   font-family: Segoe print;
 }
 
@@ -517,13 +560,16 @@ label {
 
 .checkout-panel label {
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   margin-bottom: 8px;
   font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  color: #474747;
 }
 
 .checkout-panel h3 {
-  font-size: 24px;
+  font-size: 20px;
+  margin-bottom: 5px;
 }
 
 .checkout-panel input {
@@ -570,20 +616,6 @@ label {
   gap: 4px;
 }
 
-.qty-btn {
-  width: 28px;
-  height: 28px;
-  border: none;
-  background: #ddd;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.qty-btn:hover {
-  background: #ccc;
-}
-
 .qty-number {
   font-size: 17px;
   min-width: 20px;
@@ -621,7 +653,7 @@ label {
 
   aside {
     margin-left: 0;
-    margin-top: 20px;
+    margin-top: 0;
   }
 
   .card-container {
@@ -757,10 +789,20 @@ label {
     padding: 4px 6px;
   }
 
-  /* košarica preko cijelog ekrana */
   #cart-sidebar {
-    width: 100%;
-    max-width: 100%;
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 480px;
+    max-width: 85%;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    box-sizing: border-box;
+    transition: right 0.3s ease;
+    z-index: 12000;
+    overflow-y: auto;
   }
 
   #cart-toggle {
@@ -769,9 +811,15 @@ label {
     font-size: 16px;
     padding: 4px 8px;
   }
+
+  .cart-raspored {
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+  }
 }
 
-@media (max-width: 623px) {
+@media (max-width: 650px) {
   #cart-toggle {
     right: 10px;
     top: 9px;
@@ -806,6 +854,42 @@ label {
     font-size: 12px;
     width: 70px;
     font-weight: 600;
+  }
+  .modal {
+    padding: 20px; /* da ne lijepi uz rub */
+  }
+
+  .modal-content {
+    width: 100%;
+    max-width: 420px;
+    flex-direction: column; /* slika gore, forma dolje */
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .modal-left {
+    margin-bottom: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .modal-left img {
+    width: min(150px, 50vw); /* raste do 240px, ali prati ekran */
+  }
+
+  .modal-right {
+    margin-left: 0;
+    width: 70%;
+  }
+
+  .modal-right label {
+    font-size: 16px;
+  }
+
+  #modal-price {
+    font-size: 16px;
+    margin: 5px;
   }
 }
 
@@ -845,9 +929,15 @@ label {
 
   #cart-toggle {
     right: 10px;
-    top: 80px;
-    font-size: 10px;
+    top: 25px;
+    font-size: 8px;
+    font-weight: 600;
     padding: 1px 8px;
+  }
+
+  .cart-raspored {
+    flex-direction: column;
+    gap: 10px;
   }
 
   .mySlides img {
@@ -869,5 +959,32 @@ label {
 
   .next {
     right: 8px;
+  }
+
+  .modal {
+    padding: 20px; /* da ne lijepi uz rub */
+  }
+
+  .modal-content {
+    width: 100%;
+    max-width: 320px;
+    flex-direction: column; /* slika gore, forma dolje */
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+  }
+
+  .modal-left {
+    margin-bottom: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .modal-left img {
+    width: min(150px, 40vw);
+  }
+
+  .modal-right {
+    margin-left: 0;
   }
 }

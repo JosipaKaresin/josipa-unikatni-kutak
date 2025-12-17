@@ -1,25 +1,3 @@
-//Firebase config (isti kao u index.js)
-const firebaseConfig = {
-  apiKey: "AIzaSyA2aRuGIW3jQjCqnd6hcWAk8TXsS7wmJm4",
-  authDomain: "unikatni-kutak-jk-394e6.firebaseapp.com",
-  databaseURL:
-    "https://unikatni-kutak-jk-394e6-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "unikatni-kutak-jk-394e6",
-  storageBucket: "unikatni-kutak-jk-394e6.firebasestorage.app",
-  messagingSenderId: "642454571103",
-  appId: "1:642454571103:web:2b8937f1b2ebf394f473ea",
-  measurementId: "G-4BWKK0EN4W",
-};
-
-//Init (da ne puca ako je već inicijalizirano)
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
-
-const auth = firebase.auth();
-const rtdb = firebase.database();
-const fs = firebase.firestore(); // treba firestore-compat script u admin.html
-
 const statusEl = document.getElementById("status");
 const adminContent = document.getElementById("adminContent");
 const logoutBtn = document.getElementById("logoutBtn");
@@ -73,7 +51,7 @@ auth.onAuthStateChanged(async (user) => {
     }
 
     // Admin OK
-    setStatus("Admin OK ✅ Učitavam podatke...");
+    setStatus("Vi ste admin! Učitavam podatke...");
     adminContent.style.display = "flex";
 
     loadUsersRealtime();
@@ -91,7 +69,7 @@ auth.onAuthStateChanged(async (user) => {
 function loadUsersRealtime() {
   if (!userList) return;
 
-  setStatus("Učitavam korisnike (Realtime)...");
+  setStatus("Učitavam korisnike...");
 
   rtdb.ref("Korisnik").on(
     "value",
@@ -111,9 +89,34 @@ function loadUsersRealtime() {
           <strong>${escapeHtml(u.UserName || "korisnik")}</strong>
           <div>Email: ${escapeHtml(u.Email || "")}</div>
           <small>UID: ${escapeHtml(uid)}</small>
+          <button class="del-user" data-uid="${escapeHtml(
+            uid
+          )}">Obriši</button> 
           <hr />
         `;
         userList.appendChild(li);
+      });
+      userList.querySelectorAll(".del-user").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const uid = btn.dataset.uid;
+          if (!uid) return;
+
+          const ok = confirm(
+            "Sigurno obrisati korisnika?\n\n" +
+              "Ovo briše korisnika iz baze podataka,\n" +
+              "ali ne briše njegov login račun."
+          );
+
+          if (!ok) return;
+
+          try {
+            await rtdb.ref("Korisnik/" + uid).remove();
+            alert("Korisnik obrisan iz baze.");
+          } catch (e) {
+            console.error(e);
+            alert("Greška kod brisanja korisnika.");
+          }
+        });
       });
     },
     (err) => {

@@ -83,6 +83,7 @@ nav {
   width: 100%;
 }
 
+.del-user,
 .del-order,
 .del-comment {
   background-color: rgb(237, 56, 56);
@@ -96,7 +97,8 @@ nav {
   margin: 2px;
 }
 
-.del-order,
+.del-user:hover,
+.del-order:hover,
 .del-comment:hover {
   cursor: pointer;
   background-color: rgb(226, 19, 19);
