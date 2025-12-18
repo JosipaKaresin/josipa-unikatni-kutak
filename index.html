@@ -119,12 +119,23 @@
               <form class="container2">
                 <div id="auth">
                   <h2>Prijava/registracija</h2>
-                  <input id="email" type="email" placeholder="Email" />
-                  <input id="password" type="password" placeholder="Lozinka" />
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    autocomplete="username"
+                  />
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="Lozinka"
+                    autocomplete="current-password"
+                  />
                   <input
                     id="passwordConfirm"
                     type="password"
                     placeholder="Potvrdi lozinku"
+                    autocomplete="new-password"
                   />
                   <button id="btnLogin" type="button">Prijavi se</button>
                   <button id="btnRegister" type="button">Registriraj se</button>
@@ -334,11 +345,9 @@
             Augustina Kažotića 157
           </p>
           <form>
-            <label id="msg" for="message"> Nešto Vas zanima?<br /> </label>
+            <p id="msg">Nešto Vas zanima?<br /></p>
 
-            <button class="upit">
-              <a href="pitaj.html" target="_parent">Pitajte!</a>
-            </button>
+            <a class="upit" href="pitaj.html" target="_parent">Pitajte!</a>
           </form>
           <section id="komentari" class="komentar-sekcija">
             <form id="komentarForm" class="komentar-forma">

@@ -8,7 +8,7 @@ const commentList = document.getElementById("commentList");
 
 // Helper
 function setStatus(msg) {
-  if (statusEl) statusEl.textContent = msg;
+  if (statusEl) statusEl.textContent = "Status: " + msg;
 }
 
 function escapeHtml(str = "") {
