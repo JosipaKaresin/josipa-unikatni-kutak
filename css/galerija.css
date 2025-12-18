@@ -414,12 +414,6 @@ label {
   box-shadow: 0 2px 4px black;
 }
 
-/* Naslov proizvoda u košarici */
-#cart-sidebar #cart-items li strong:first-child {
-  font-size: 18px;
-  color: #5f4c4c;
-}
-
 #cart-sidebar {
   position: fixed;
   top: 0;
@@ -454,7 +448,7 @@ label {
 .cart-left strong {
   display: block;
   font-family: Segoe print;
-  font-size: 16px;
+  font-size: 18px;
   color: #484444;
 }
 
@@ -472,7 +466,6 @@ label {
   flex-direction: column;
   align-items: center;
   margin-left: 10px;
-  background-color: rgb(223, 218, 218);
 }
 
 .cart-right {
@@ -485,10 +478,10 @@ label {
   font-family: Lucida caligraphy;
 }
 
-#cart-sidebar ul {
+/* #cart-sidebar ul {
   font-weight: bolder;
   color: #393838;
-}
+} */
 
 #cart-items {
   list-style: none;

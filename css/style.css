@@ -194,20 +194,41 @@ nav {
   right: 0;
 }
 
-#cart-sidebar h3 {
-  text-align: center;
+.cart-raspored {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.cart-left strong {
+  display: block;
   font-family: Segoe print;
+  font-size: 16px;
   color: #484444;
-  margin-bottom: 10px;
+}
+
+.cart-img {
+  width: 90px;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px black;
 }
 
 #cart-sidebar p {
   font-family: Lucida caligraphy;
 }
 
-#cart-sidebar ul {
-  font-weight: bolder;
-  color: #393838;
+.cart-right {
+  margin-top: 10px;
+  margin-right: 10px;
+  gap: 5px;
 }
 
 #cart-items {
@@ -443,7 +464,8 @@ form {
   text-align: center;
 }
 
-label {
+label,
+#msg {
   color: white;
   text-align: center;
   font-weight: bolder;
@@ -633,7 +655,7 @@ footer a {
 .komentar-sekcija {
   width: 90%;
   max-width: 700px;
-  margin: 30px auto;
+  margin: 50px auto 0;
   background-color: #888686;
   padding: 10px;
   border-radius: 10px;
@@ -693,17 +715,14 @@ footer a {
   border-radius: 16px;
   margin-bottom: 40px;
   margin-top: 10px;
-}
-
-.upit a {
   text-decoration: none;
-  color: #444444;
-  font-family: Segoe print;
+  color: #353434;
+  background-color: rgb(248, 245, 242);
+  box-shadow: 0 2px 4px black;
 }
 
 .upit:hover {
   background-color: aliceblue;
-  transform: scale(1.08);
 }
 
 #pitaj {
