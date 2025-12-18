@@ -75,8 +75,8 @@ function renderCart() {
     btn.addEventListener("click", () => {
       const cart = getCart();
       cart.splice(btn.dataset.index, 1); //briše 1 element na nizu
-      if (!confirm("Jeste li sigurni da želite obrisati proizvod?"))
-        saveCart(cart);
+      if (!confirm("Jeste li sigurni da želite obrisati proizvod?")) return;
+      saveCart(cart);
       renderCart();
       updateCartCount();
     });
